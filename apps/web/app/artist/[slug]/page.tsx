@@ -26,9 +26,9 @@ export default function ArtistProfilePage() {
   const otherArtists = artists.filter(a => a.slug !== slug);
 
   return (
-    <div className="-m-4 md:-m-8">
+    <div className="relative">
       {/* Hero Section */}
-      <section className="relative h-[50vh] md:h-[70vh] flex items-end p-8 md:p-12 overflow-hidden">
+      <section className="relative min-h-[50vh] md:h-[70vh] flex items-end p-6 md:p-12 overflow-hidden pt-20 md:pt-24">
         <div className="absolute inset-0 z-0">
           <img 
             src={artist.image} 
@@ -38,17 +38,19 @@ export default function ArtistProfilePage() {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
         </div>
 
-        <div className="relative z-10 flex flex-col md:flex-row items-end gap-8 w-full max-w-[1400px] mx-auto">
+        <div className="relative z-10 flex flex-col md:flex-row items-center md:items-end gap-6 md:gap-8 w-full max-w-[1400px] mx-auto text-center md:text-left">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="w-56 h-56 md:w-72 md:h-72 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/5 flex-shrink-0"
+            className="mt-6 flex justify-center w-full md:w-auto"
           >
-            <img src={artist.image} alt={artist.name} className="w-full h-full object-cover" />
+            <div className="w-full max-w-md md:w-72 md:h-72 aspect-square rounded-2xl overflow-hidden shadow-2xl border-4 border-white/5 flex-shrink-0">
+              <img src={artist.image} alt={artist.name} className="w-full h-full object-cover" />
+            </div>
           </motion.div>
 
-          <div className="flex-1 space-y-4">
-            <div className="flex flex-wrap items-center gap-3">
+          <div className="flex-1 space-y-4 w-full">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
               {artist.verified && (
                 <div className="flex items-center gap-2 bg-accent/20 text-accent px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest border border-accent/30">
                   <Disc3 size={14} className="animate-spin-slow" />
@@ -66,7 +68,7 @@ export default function ArtistProfilePage() {
               {artist.name}
             </h1>
             
-            <div className="flex items-center gap-6 text-text-secondary font-bold text-lg">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 md:gap-6 text-text-secondary font-bold text-base md:text-lg">
               <span className="flex items-center gap-2"><Users size={20} className="text-accent" /> {artist.listeners} Listeners</span>
               <span className="flex items-center gap-2"><Globe size={20} className="text-accent" /> {artist.country}</span>
               <span className="flex items-center gap-2 uppercase tracking-widest text-sm bg-surface px-3 py-1 rounded-lg border border-white/5">{artist.genre}</span>
@@ -79,7 +81,7 @@ export default function ArtistProfilePage() {
         {/* Stats & Actions */}
         <section className="flex flex-col lg:flex-row gap-12 items-start">
           <div className="flex-1 space-y-10 w-full">
-            <div className="flex flex-wrap items-center gap-6">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 md:gap-6">
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
