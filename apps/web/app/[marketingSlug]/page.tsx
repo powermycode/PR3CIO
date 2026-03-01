@@ -9,12 +9,36 @@ import { artists } from "../data/artists";
 
 export default function MarketingPage() {
   const params = useParams();
+  const marketingSlug = params?.marketingSlug as string;
+  
+  if (!marketingSlug) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background text-white p-8 text-center">
+        <div className="space-y-4">
+          <h1 className="text-4xl font-black italic">ARTIST NOT FOUND</h1>
+          <p className="text-text-secondary">The requested discovery page is unavailable.</p>
+          <Link href="/explore" className="inline-block px-8 py-3 bg-accent text-white rounded-full font-bold">
+            Explore Artists
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   const artist = artists.find(a => a.slug === marketingSlug);
   
-  // If no artist found, this might be a 404 or another route
-  // In a real app, we might want to handle this differently, but for now we follow the "Sponsored Artist Landing System"
   if (!artist) {
-    return null; // Next.js will eventually 404 if no other route matches
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background text-white p-8 text-center">
+        <div className="space-y-4">
+          <h1 className="text-4xl font-black italic">ARTIST NOT FOUND</h1>
+          <p className="text-text-secondary">The artist &quot;{marketingSlug}&quot; does not have a featured landing page yet.</p>
+          <Link href="/explore" className="inline-block px-8 py-3 bg-accent text-white rounded-full font-bold">
+            Explore Artists
+          </Link>
+        </div>
+      </div>
+    );
   }
 
   return (
