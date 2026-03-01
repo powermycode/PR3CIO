@@ -3,90 +3,75 @@
 > @pr3cio/web@0.1.0 build /Users/arunrachuri/PR3CIO/apps/web
 > next build
 
-  [1m[38;2;173;127;168m▲ Next.js 14.2.24[39m[22m
+  [1m[38;2;173;127;168m▲ Next.js 14.2.35[39m[22m
   - Environments: .env.local
 
  [37m[1m [22m[39m Creating an optimized production build ...
 <w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (133kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
  [32m[1m✓[22m[39m Compiled successfully
-[?25l [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G[?25h[31m
-Failed to compile.[39m
-[?25l [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G[?25h
-./app/[marketingSlug]/page.tsx
-11:9  Error: 'router' is assigned a value but never used.  @typescript-eslint/no-unused-vars
-26:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-56:13  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+ [37m[1m [22m[39m Skipping validation of types
+ [37m[1m [22m[39m Skipping linting
+[?25l [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Collecting page data     [32m[1m✓[22m[39m Collecting page data 
+[?25l [37m[1m [22m[39m Generating static pages (0/40)  [36m[    ][39m[2K[1G [37m[1m [22m[39m Generating static pages (0/40)  [36m[=   ][39m[2K[1G [37m[1m [22m[39m Generating static pages (9/40)  [36m[==  ][39m[2K[1G [37m[1m [22m[39m Generating static pages (10/40)  [36m[=== ][39m[2K[1G [37m[1m [22m[39m Generating static pages (29/40)  [36m[ ===][39m[2K[1G [37m[1m [22m[39m Generating static pages (31/40)  [36m[  ==][39m[2K[1G[?25h [32m[1m✓[22m[39m Generating static pages (40/40)
+[?25l [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[?25l [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G[?25h [37m[1m [22m[39m Collecting build traces     [32m[1m✓[22m[39m Collecting build traces 
+[2K[1G[?25h [37m[1m [22m[39m Finalizing page optimization     [32m[1m✓[22m[39m Finalizing page optimization 
 
-./app/artist/[slug]/page.tsx
-6:23  Error: 'Share2' is defined but never used.  @typescript-eslint/no-unused-vars
-6:31  Error: 'MoreHorizontal' is defined but never used.  @typescript-eslint/no-unused-vars
-6:47  Error: 'Clock' is defined but never used.  @typescript-eslint/no-unused-vars
-33:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-47:13  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-147:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-147:15  Warning: img elements must have an alt prop, either with meaningful text, or an empty string for decorative images.  jsx-a11y/alt-text
-187:21  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+[4mRoute (app)[24m                               [4mSize[24m     [4mFirst Load JS[24m
+┌ ○ /                                     4.02 kB         [37m[1m141 kB[22m[39m
+├ ○ /_not-found                           870 B          [37m[1m88.2 kB[22m[39m
+├ ƒ /[marketingSlug]                      2.35 kB         [37m[1m139 kB[22m[39m
+├ ƒ /admin                                178 B          [37m[1m96.1 kB[22m[39m
+├ ƒ /admin/analytics                      178 B          [37m[1m96.1 kB[22m[39m
+├ ○ /admin/artists                        708 B          [37m[1m96.7 kB[22m[39m
+├ ƒ /admin/reports                        178 B          [37m[1m96.1 kB[22m[39m
+├ ○ /admin/tracks                         708 B          [37m[1m96.7 kB[22m[39m
+├ ○ /ads                                  3.71 kB         [37m[1m146 kB[22m[39m
+├ ○ /ai-assisted                          1.01 kB          [37m[1m97 kB[22m[39m
+├ ƒ /api/auth/[...nextauth]               0 B                [37m[1m0 B[22m[39m
+├ ƒ /api/auth/callback                    0 B                [37m[1m0 B[22m[39m
+├ ƒ /api/demo/admin/artists/[id]/ban      0 B                [37m[1m0 B[22m[39m
+├ ○ /api/demo/admin/dashboard             0 B                [37m[1m0 B[22m[39m
+├ ○ /api/demo/admin/reports               0 B                [37m[1m0 B[22m[39m
+├ ƒ /api/demo/admin/tracks/[id]/remove    0 B                [37m[1m0 B[22m[39m
+├ ƒ /api/demo/ai/generate                 0 B                [37m[1m0 B[22m[39m
+├ ○ /api/demo/ai/projects                 0 B                [37m[1m0 B[22m[39m
+├ ƒ /api/demo/ai/projects/[id]/publish    0 B                [37m[1m0 B[22m[39m
+├ ○ /api/demo/music/home                  0 B                [37m[1m0 B[22m[39m
+├ ƒ /api/demo/music/tracks/[id]/comments  0 B                [37m[1m0 B[22m[39m
+├ ƒ /api/demo/music/tracks/[id]/like      0 B                [37m[1m0 B[22m[39m
+├ ○ /api/demo/profiles/artist             0 B                [37m[1m0 B[22m[39m
+├ ○ /api/demo/profiles/listener           0 B                [37m[1m0 B[22m[39m
+├ ○ /artist                               1.44 kB         [37m[1m129 kB[22m[39m
+├ ƒ /artist/[slug]                        5.02 kB         [37m[1m142 kB[22m[39m
+├ ○ /artists                              1.75 kB        [37m[1m97.7 kB[22m[39m
+├ ○ /community                            1.01 kB          [37m[1m97 kB[22m[39m
+├ ○ /create-with-ai                       1.01 kB          [37m[1m97 kB[22m[39m
+├ ○ /earn                                 1.01 kB          [37m[1m97 kB[22m[39m
+├ ○ /explore                              3.14 kB         [37m[1m140 kB[22m[39m
+├ ○ /growth                               1.01 kB          [37m[1m97 kB[22m[39m
+├ ○ /investors                            5.91 kB         [37m[1m147 kB[22m[39m
+├ ○ /library                              1.1 kB          [37m[1m143 kB[22m[39m
+├ ○ /listener                             1.04 kB         [37m[1m134 kB[22m[39m
+├ ○ /login                                2.03 kB         [37m[1m194 kB[22m[39m
+├ ○ /luis                                 4.23 kB         [37m[1m146 kB[22m[39m
+├ ○ /presentation                         2.4 kB          [37m[1m139 kB[22m[39m
+├ ○ /rewards                              1.01 kB          [37m[1m97 kB[22m[39m
+├ ○ /showcase                             1.01 kB          [37m[1m97 kB[22m[39m
+├ ○ /signup                               1.6 kB          [37m[1m194 kB[22m[39m
+├ ○ /studio                               3.05 kB         [37m[1m131 kB[22m[39m
+├ ○ /tracks                               2.1 kB         [37m[1m98.1 kB[22m[39m
+├ ○ /trending                             1.86 kB        [37m[1m97.8 kB[22m[39m
+├ ○ /users                                985 B            [37m[1m97 kB[22m[39m
+└ ○ /verify                               1.34 kB        [37m[1m97.3 kB[22m[39m
++ First Load JS shared by all             [37m[1m87.3 kB[22m[39m
+  ├ chunks/4-81659dc36cdeadd1.js          31.7 kB
+  ├ chunks/b6890e83-fd48002832b44e5b.js   53.6 kB
+  └ other shared chunks (total)           1.95 kB
 
-./app/explore/page.tsx
-78:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-78:19  Warning: img elements must have an alt prop, either with meaningful text, or an empty string for decorative images.  jsx-a11y/alt-text
-116:21  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
 
-./app/investors/page.tsx
-227:24  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-266:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-372:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-380:21  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-380:21  Warning: img elements must have an alt prop, either with meaningful text, or an empty string for decorative images.  jsx-a11y/alt-text
-493:14  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+ƒ Middleware                              [37m[1m73.7 kB[22m[39m
 
-./app/login/page.tsx
-60:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
 
-./app/luis/page.tsx
-116:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-298:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-./app/page.tsx
-5:35  Error: 'Music2' is defined but never used.  @typescript-eslint/no-unused-vars
-41:38  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-92:17  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-153:17  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-153:17  Warning: img elements must have an alt prop, either with meaningful text, or an empty string for decorative images.  jsx-a11y/alt-text
-
-./app/presentation/page.tsx
-29:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-84:112  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-177:40  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-
-./app/signup/page.tsx
-49:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-./components/AudioPlayer.tsx
-49:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-131:13  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-./components/LayoutWrapper.tsx
-65:17  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-./components/MusicPlayer.tsx
-45:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-./components/NavSidebar.tsx
-27:13  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-./components/brand-logo.tsx
-6:7  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-./components/feature-page.tsx
-50:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-./components/hero-section.tsx
-129:9  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-./components/listener-panel.tsx
-100:13  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-134:17  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
-[?25l [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[?25h[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m
+[?25h

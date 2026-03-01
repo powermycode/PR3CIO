@@ -23,6 +23,7 @@
     "@google/gemini-cli": "^0.29.7",
     "@types/node": "^20.17.24",
     "eslint": "^9.21.0",
+    "next": "^14.2.35",
     "prettier": "^3.5.2",
     "turbo": "^2.4.4",
     "typescript": "^5.8.2"
