@@ -1,0 +1,4 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "cd ../.. && turbo run build --filter=@pr3cio/web"
+}
