@@ -12,8 +12,8 @@ export default function HomePage() {
   return (
     <div className="space-y-24 pb-20">
       {/* Hero Section */}
-      <section className="relative h-[85vh] flex items-center justify-center text-center px-4 overflow-hidden rounded-[3rem] bg-gradient-to-b from-accent/20 via-background to-background border border-white/5">
-        <div className="relative z-10 max-w-5xl">
+      <section className="relative min-h-[85vh] flex items-center justify-center text-center px-4 pt-20 pb-20 overflow-hidden rounded-[3rem] bg-gradient-to-b from-accent/20 via-background to-background border border-white/5">
+        <div className="relative z-10 max-w-5xl w-full">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -45,13 +45,13 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-8 sm:mt-12"
           >
-            <Link href="/explore" className="w-full sm:w-auto px-12 py-5 bg-accent hover:bg-accent/90 text-white rounded-full font-black text-xl transition-all shadow-2xl shadow-accent/40 flex items-center justify-center gap-3 group">
+            <Link href="/explore" className="w-full sm:w-auto px-10 py-4 sm:px-12 sm:py-5 bg-accent hover:bg-accent/90 text-white rounded-full font-black text-lg sm:text-xl transition-all shadow-2xl shadow-accent/40 flex items-center justify-center gap-3 group">
               Explore Artists
               <ArrowRight className="group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link href="/signup" className="w-full sm:w-auto px-12 py-5 bg-white/5 hover:bg-white/10 text-white rounded-full font-black text-xl transition-all border border-white/10">
+            <Link href="/signup" className="w-full sm:w-auto px-10 py-4 sm:px-12 sm:py-5 bg-white/5 hover:bg-white/10 text-white rounded-full font-black text-lg sm:text-xl transition-all border border-white/10">
               Create Account
             </Link>
           </motion.div>

@@ -56,13 +56,13 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
         {/* Main Content Area */}
         <div className="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto overflow-x-hidden relative no-scrollbar">
           {/* Mobile Top Logo Bar */}
-          <header className="md:hidden flex items-center justify-between p-4 sticky top-0 bg-background/90 backdrop-blur-xl z-40 border-b border-white/5">
+          <header className="md:hidden flex items-center justify-between py-2 px-4 h-14 sticky top-0 bg-background/90 backdrop-blur-xl z-40 border-b border-white/5">
             <Link href="/" className="flex items-center gap-2 group">
               <motion.div 
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.2 }}
               >
-                <img src="/logo.webp" alt="PR3CIO" className="w-14 h-14 object-contain" />
+                <img src="/logo.webp" alt="PR3CIO" className="w-10 h-10 object-contain" />
               </motion.div>
             </Link>
           </header>
