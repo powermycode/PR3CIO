@@ -8,6 +8,23 @@ import Link from "next/link";
 import { artists } from "../../../data/artists";
 import ShareBar from "../../../components/ShareBar";
 
+import { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const artist = artists.find(a => a.slug === params.slug);
+  const name = artist?.name || "Artist";
+  
+  return {
+    title: `${name} | PR3CIO Independent Artist`,
+    description: `Discover ${name} on PR3CIO, a platform for independent artists creating original music using AI powered studio tools.`,
+    openGraph: {
+      title: `${name} | PR3CIO Independent Artist`,
+      description: `Discover ${name} on PR3CIO, a platform for independent artists creating original music using AI powered studio tools.`,
+      type: "website",
+    }
+  };
+}
+
 export default function ArtistProfilePage() {
   const { slug } = useParams();
   

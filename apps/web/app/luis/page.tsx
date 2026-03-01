@@ -5,6 +5,18 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { ChevronRight, Play, TrendingUp, Music, Users, Rocket, Sparkles, Instagram, ArrowRight } from 'lucide-react';
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "PR3CIO | AI Music Platform Founded by Luis",
+  description: "PR3CIO is an AI powered music creation platform helping independent artists create, release and earn from original music.",
+  openGraph: {
+    title: "PR3CIO | AI Music Platform Founded by Luis",
+    description: "PR3CIO is an AI powered music creation platform helping independent artists create, release and earn from original music.",
+    type: "website",
+  }
+};
+
 const fadeInUp = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },

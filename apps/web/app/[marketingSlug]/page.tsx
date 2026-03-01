@@ -7,6 +7,23 @@ import { Play, ArrowRight, Disc3 } from "lucide-react";
 import Link from "next/link";
 import { artists } from "../data/artists";
 
+import { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: { marketingSlug: string } }): Promise<Metadata> {
+  const artist = artists.find(a => a.slug === params.marketingSlug);
+  const name = artist?.name || "Artist";
+  
+  return {
+    title: `${name} | PR3CIO Independent Artist`,
+    description: `Discover ${name} on PR3CIO, a platform for independent artists creating original music using AI powered studio tools.`,
+    openGraph: {
+      title: `${name} | PR3CIO Independent Artist`,
+      description: `Discover ${name} on PR3CIO, a platform for independent artists creating original music using AI powered studio tools.`,
+      type: "website",
+    }
+  };
+}
+
 export default function MarketingPage() {
   const params = useParams();
   const marketingSlug = params?.marketingSlug as string;
