@@ -1,4 +1,4 @@
 {
   "framework": "nextjs",
-  "rootDirectory": "apps/web"
+  "buildCommand": "pnpm run vercel-build"
 }
