@@ -12,7 +12,7 @@ import Link from "next/link";
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isAuthPage = pathname?.startsWith('/login') || pathname?.startsWith('/signup');
-  const isCleanPage = pathname?.startsWith('/presentation') || pathname?.startsWith('/luis') || pathname?.startsWith('/investors');
+  const isCleanPage = pathname?.startsWith('/presentation') || pathname?.startsWith('/luis') || pathname?.startsWith('/investors') || pathname?.startsWith('/strategy');
 
   if (isAuthPage) {
     return (
