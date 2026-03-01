@@ -11,15 +11,15 @@
  [32m[1m✓[22m[39m Compiled successfully
  [37m[1m [22m[39m Skipping validation of types
  [37m[1m [22m[39m Skipping linting
-[?25l [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Collecting page data     [32m[1m✓[22m[39m Collecting page data 
-[?25l [37m[1m [22m[39m Generating static pages (0/40)  [36m[    ][39m[2K[1G [37m[1m [22m[39m Generating static pages (0/40)  [36m[=   ][39m[2K[1G [37m[1m [22m[39m Generating static pages (9/40)  [36m[==  ][39m[2K[1G [37m[1m [22m[39m Generating static pages (10/40)  [36m[=== ][39m[2K[1G [37m[1m [22m[39m Generating static pages (29/40)  [36m[ ===][39m[2K[1G [37m[1m [22m[39m Generating static pages (31/40)  [36m[  ==][39m[2K[1G[?25h [32m[1m✓[22m[39m Generating static pages (40/40)
-[?25l [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[?25l [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G[?25h [37m[1m [22m[39m Collecting build traces     [32m[1m✓[22m[39m Collecting build traces 
+[?25l [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m..[39m[2K[1G[?25h [37m[1m [22m[39m Collecting page data     [32m[1m✓[22m[39m Collecting page data 
+[?25l [37m[1m [22m[39m Generating static pages (0/41)  [36m[    ][39m[2K[1G [37m[1m [22m[39m Generating static pages (0/41)  [36m[=   ][39m[2K[1G [37m[1m [22m[39m Generating static pages (9/41)  [36m[==  ][39m[2K[1G [37m[1m [22m[39m Generating static pages (10/41)  [36m[=== ][39m[2K[1G [37m[1m [22m[39m Generating static pages (24/41)  [36m[ ===][39m[2K[1G [37m[1m [22m[39m Generating static pages (24/41)  [36m[  ==][39m[2K[1G[?25h [32m[1m✓[22m[39m Generating static pages (41/41)
+[?25l [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[?25l [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G[?25h [37m[1m [22m[39m Collecting build traces     [32m[1m✓[22m[39m Collecting build traces 
 [2K[1G[?25h [37m[1m [22m[39m Finalizing page optimization     [32m[1m✓[22m[39m Finalizing page optimization 
 
 [4mRoute (app)[24m                               [4mSize[24m     [4mFirst Load JS[24m
-┌ ○ /                                     4.02 kB         [37m[1m141 kB[22m[39m
+┌ ○ /                                     4.05 kB         [37m[1m141 kB[22m[39m
 ├ ○ /_not-found                           870 B          [37m[1m88.2 kB[22m[39m
-├ ƒ /[marketingSlug]                      2.35 kB         [37m[1m139 kB[22m[39m
+├ ƒ /[marketingSlug]                      2.55 kB         [37m[1m139 kB[22m[39m
 ├ ƒ /admin                                178 B          [37m[1m96.1 kB[22m[39m
 ├ ƒ /admin/analytics                      178 B          [37m[1m96.1 kB[22m[39m
 ├ ○ /admin/artists                        708 B          [37m[1m96.7 kB[22m[39m
@@ -42,7 +42,7 @@
 ├ ○ /api/demo/profiles/artist             0 B                [37m[1m0 B[22m[39m
 ├ ○ /api/demo/profiles/listener           0 B                [37m[1m0 B[22m[39m
 ├ ○ /artist                               1.44 kB         [37m[1m129 kB[22m[39m
-├ ƒ /artist/[slug]                        5.02 kB         [37m[1m142 kB[22m[39m
+├ ƒ /artist/[slug]                        5.08 kB         [37m[1m142 kB[22m[39m
 ├ ○ /artists                              1.75 kB        [37m[1m97.7 kB[22m[39m
 ├ ○ /community                            1.01 kB          [37m[1m97 kB[22m[39m
 ├ ○ /create-with-ai                       1.01 kB          [37m[1m97 kB[22m[39m
@@ -53,11 +53,12 @@
 ├ ○ /library                              1.1 kB          [37m[1m143 kB[22m[39m
 ├ ○ /listener                             1.04 kB         [37m[1m134 kB[22m[39m
 ├ ○ /login                                2.03 kB         [37m[1m194 kB[22m[39m
-├ ○ /luis                                 4.23 kB         [37m[1m146 kB[22m[39m
+├ ○ /luis                                 4.22 kB         [37m[1m146 kB[22m[39m
 ├ ○ /presentation                         2.4 kB          [37m[1m139 kB[22m[39m
 ├ ○ /rewards                              1.01 kB          [37m[1m97 kB[22m[39m
 ├ ○ /showcase                             1.01 kB          [37m[1m97 kB[22m[39m
 ├ ○ /signup                               1.6 kB          [37m[1m194 kB[22m[39m
+├ ○ /strategy                             6.32 kB         [37m[1m143 kB[22m[39m
 ├ ○ /studio                               3.05 kB         [37m[1m131 kB[22m[39m
 ├ ○ /tracks                               2.1 kB         [37m[1m98.1 kB[22m[39m
 ├ ○ /trending                             1.86 kB        [37m[1m97.8 kB[22m[39m
@@ -69,7 +70,7 @@
   └ other shared chunks (total)           1.95 kB
 
 
-ƒ Middleware                              [37m[1m73.7 kB[22m[39m
+ƒ Middleware                              [37m[1m73.6 kB[22m[39m
 
 ○  (Static)   prerendered as static content
 ƒ  (Dynamic)  server-rendered on demand
