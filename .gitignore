@@ -14,3 +14,4 @@ ios
 *.tsbuildinfo
 .DS_Store
 prisma/dev.db
+.vercel

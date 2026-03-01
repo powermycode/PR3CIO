@@ -8,12 +8,16 @@
   },
   "scripts": {
     "build": "turbo run build",
+    "vercel-build": "turbo run build --filter=@pr3cio/web",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
     "format": "turbo run format",
     "gemini": "gemini"
+  },
+  "dependencies": {
+    "next": "^14.2.35"
   },
   "devDependencies": {
     "@google/gemini-cli": "^0.29.7",
