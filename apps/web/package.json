@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build --no-lint || echo build-forced",
+    "build": "next build",
     "start": "next start",
     "lint": "echo 'lint skipped'",
     "typecheck": "echo 'typecheck skipped'",
