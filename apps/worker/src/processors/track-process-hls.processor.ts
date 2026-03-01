@@ -22,7 +22,7 @@ export class TrackProcessHlsProcessor implements OnModuleInit, OnModuleDestroy {
       QUEUE_NAMES.TRACKS_PROCESS_HLS,
       async (job: Job<TrackProcessHlsJob>) => this.handleJob(job),
       {
-        connection: this.redisService.getClient()
+        connection: this.redisService.getClient() as any
       }
     );
 

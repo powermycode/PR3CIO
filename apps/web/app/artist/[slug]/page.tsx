@@ -3,7 +3,7 @@
 import React from "react";
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { Play, Heart, Share2, MoreHorizontal, Clock, Disc3, Users, Globe, Music2 } from "lucide-react";
+import { Play, Heart, Disc3, Users, Globe, Music2 } from "lucide-react";
 import Link from "next/link";
 import { artists } from "../../../data/artists";
 import ShareBar from "../../../components/ShareBar";

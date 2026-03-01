@@ -1,15 +1,14 @@
 'use client';
 
 import React from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Play, ArrowRight, Disc3 } from "lucide-react";
 import Link from "next/link";
 import { artists } from "../data/artists";
-export default function MarketingLandingPage() {
-  const { marketingSlug } = useParams();
-  const router = useRouter();
-  
+
+export default function MarketingPage() {
+  const params = useParams();
   const artist = artists.find(a => a.slug === marketingSlug);
   
   // If no artist found, this might be a 404 or another route

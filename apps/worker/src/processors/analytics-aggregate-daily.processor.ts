@@ -23,7 +23,7 @@ export class AnalyticsAggregateDailyProcessor implements OnModuleInit, OnModuleD
       QUEUE_NAMES.ANALYTICS_AGGREGATE_DAILY,
       async (job: Job<AnalyticsAggregateDailyJob>) => this.handleJob(job),
       {
-        connection
+        connection: connection as any
       }
     );
 
@@ -41,10 +41,10 @@ export class AnalyticsAggregateDailyProcessor implements OnModuleInit, OnModuleD
     });
 
     this.queue = new Queue<AnalyticsAggregateDailyJob>(QUEUE_NAMES.ANALYTICS_AGGREGATE_DAILY, {
-      connection
-    });
+      connection: connection as any
+    } as any);
 
-    await this.queue.add(
+    await this.queue?.add(
       "nightly-aggregation",
       {
         date: this.yesterdayDateUTC()

@@ -22,7 +22,7 @@ export class AiGenerateProcessor implements OnModuleInit, OnModuleDestroy {
       QUEUE_NAMES.AI_GENERATE,
       async (job: Job<AIGenerateJob>) => this.handleJob(job),
       {
-        connection: this.redisService.getClient()
+        connection: this.redisService.getClient() as any
       }
     );
 

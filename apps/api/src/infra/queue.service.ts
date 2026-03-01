@@ -17,14 +17,14 @@ export class QueueService implements OnModuleDestroy {
   private readonly analyticsQueue: Queue<AnalyticsAggregateDailyJob>;
 
   constructor(redisService: RedisService) {
-    const connection = redisService.getClient();
+    const connection = redisService.getClient() as any;
 
-    this.aiGenerateQueue = new Queue<AIGenerateJob>(QUEUE_NAMES.AI_GENERATE, { connection });
-    this.aiMergeQueue = new Queue<AIMergeEnhanceJob>(QUEUE_NAMES.AI_MERGE_ENHANCE, { connection });
-    this.hlsQueue = new Queue<TrackProcessHlsJob>(QUEUE_NAMES.TRACKS_PROCESS_HLS, { connection });
+    this.aiGenerateQueue = new Queue<AIGenerateJob>(QUEUE_NAMES.AI_GENERATE, { connection } as any);
+    this.aiMergeQueue = new Queue<AIMergeEnhanceJob>(QUEUE_NAMES.AI_MERGE_ENHANCE, { connection } as any);
+    this.hlsQueue = new Queue<TrackProcessHlsJob>(QUEUE_NAMES.TRACKS_PROCESS_HLS, { connection } as any);
     this.analyticsQueue = new Queue<AnalyticsAggregateDailyJob>(QUEUE_NAMES.ANALYTICS_AGGREGATE_DAILY, {
       connection
-    });
+    } as any);
   }
 
   enqueueAIGenerate(job: AIGenerateJob) {

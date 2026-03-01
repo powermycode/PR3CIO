@@ -81,7 +81,7 @@ export default function PresentationPage() {
             The PR3CIO <br />Bridge.
           </h2>
           <p className="text-2xl md:text-4xl text-text-secondary max-w-3xl leading-tight font-medium">
-            PR3CIO connects emerging hip hop artists with global listeners using AI-powered music tools. We don't just host music; we amplify talent.
+            PR3CIO connects emerging hip hop artists with global listeners using AI-powered music tools. We don&apos;t just host music; we amplify talent.
           </p>
         </motion.div>
       </section>
@@ -174,7 +174,7 @@ export default function PresentationPage() {
           <motion.div {...fadeInUp}>
             <span className="font-black uppercase tracking-[0.3em] text-sm mb-4 block">05 / Vision</span>
             <h2 className="text-6xl md:text-[100px] font-black tracking-tighter uppercase leading-[0.9] italic mb-12">
-              The Home of <br />Hip Hop's Next <br />Generation.
+              The Home of <br />Hip Hop&apos;s Next <br />Generation.
             </h2>
           </motion.div>
         </div>

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Play, ArrowRight, Disc3, Music2, Star } from "lucide-react";
+import { Play, ArrowRight, Disc3, Star } from "lucide-react";
 import Link from "next/link";
 import { artists } from "../data/artists";
 
@@ -38,7 +38,7 @@ export default function HomePage() {
             transition={{ delay: 0.1 }}
             className="text-xl md:text-2xl text-text-secondary mb-12 max-w-3xl mx-auto font-medium leading-relaxed"
           >
-            PR3CIO connects the world's most innovative emerging artists with global listeners using next-gen AI-powered music tools.
+            PR3CIO connects the world&apos;s most innovative emerging artists with global listeners using next-gen AI-powered music tools.
           </motion.p>
           
           <motion.div 

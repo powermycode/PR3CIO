@@ -24,7 +24,7 @@ export class AiMergeEnhanceProcessor implements OnModuleInit, OnModuleDestroy {
       QUEUE_NAMES.AI_MERGE_ENHANCE,
       async (job: Job<AIMergeEnhanceJob>) => this.handleJob(job),
       {
-        connection: this.redisService.getClient()
+        connection: this.redisService.getClient() as any
       }
     );
 
