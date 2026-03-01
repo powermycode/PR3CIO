@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String?
+  name          String?
+  image         String?
+  emailVerified DateTime?
+  role          String    @default("LISTENER") // "LISTENER" or "ARTIST"
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  artistProfile   ArtistProfile?
+  listenerProfile ListenerProfile?
+  comments        Comment[]
+}
+
+model ArtistProfile {
+  id               String   @id @default(cuid())
+  userId           String   @unique
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bio              String?
+  genres           String // Comma separated or JSON string
+  monthlyListeners Int      @default(0)
+  tracks           Track[]
+}
+
+model ListenerProfile {
+  id             String     @id @default(cuid())
+  userId         String     @unique
+  user           User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  location       String?
+  favoriteGenres String?
+  listeningHours Int        @default(0)
+  following      Int        @default(0)
+  followers      Int        @default(0)
+  playlists      Playlist[]
+  likedTracks    Track[]    @relation("LikedTracks")
+  savedTracks    Track[]    @relation("SavedTracks")
+}
+
+model Track {
+  id              String         @id @default(cuid())
+  title           String
+  artistId        String
+  artist          ArtistProfile  @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  audioUrl        String
+  coverArt        String?
+  genre           String?
+  description     String?
+  playCount       Int            @default(0)
+  likes           Int            @default(0)
+  createdAt       DateTime       @default(now())
+  
+  playlists       Playlist[]
+  likedBy         ListenerProfile[] @relation("LikedTracks")
+  savedBy         ListenerProfile[] @relation("SavedTracks")
+  comments        Comment[]
+}
+
+model Playlist {
+  id          String          @id @default(cuid())
+  name        String
+  listenerId  String
+  listener    ListenerProfile @relation(fields: [listenerId], references: [id], onDelete: Cascade)
+  tracks      Track[]
+  createdAt   DateTime        @default(now())
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String
+  trackId   String
+  track     Track    @relation(fields: [trackId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}

@@ -1,0 +1,5 @@
+
+
+> @pr3cio/ui@0.1.0 build /Users/arunrachuri/PR3CIO/packages/ui
+> tsc -p tsconfig.json
+

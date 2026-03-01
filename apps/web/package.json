@@ -1,0 +1,37 @@
+{
+  "name": "@pr3cio/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "echo 'web tests pending'"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "@supabase/ssr": "^0.8.0",
+    "@supabase/supabase-js": "^2.49.1",
+    "framer-motion": "^12.34.3",
+    "lucide-react": "^0.575.0",
+    "next": "14.2.24",
+    "next-auth": "^4.24.13",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "zustand": "^5.0.11"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.1",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "autoprefixer": "^10.4.27",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "14.2.24",
+    "postcss": "^8.5.6",
+    "prisma": "^5.22.0",
+    "tailwindcss": "^4.2.1",
+    "typescript": "^5.8.2"
+  }
+}

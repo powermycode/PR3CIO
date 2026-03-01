@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0B0B0F;
+  --color-surface: #15151B;
+  --color-accent: #8B5CF6;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #9CA3AF;
+  
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: #0B0B0F;
+    --surface: #15151B;
+    --accent: #8B5CF6;
+    --text-primary: #FFFFFF;
+    --text-secondary: #9CA3AF;
+  }
+  
+  body {
+    @apply bg-background text-text-primary font-sans antialiased;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-text-primary;
+  }
+}
+
+@layer utilities {
+  .hero-headline {
+    @apply text-5xl md:text-7xl font-black tracking-tight;
+  }
+  
+  .section-title {
+    @apply text-3xl font-bold mb-6;
+  }
+  
+  .body-text {
+    @apply text-base text-gray-400;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .spotify-card {
+    @apply bg-surface p-4 rounded-xl transition-all duration-300 hover:bg-white/10;
+  }
+
+  .glass-header {
+    @apply bg-background/80 backdrop-blur-md sticky top-0 z-50;
+  }
+}

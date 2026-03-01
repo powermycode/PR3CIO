@@ -1,0 +1,5 @@
+
+
+> @pr3cio/api-client@0.1.0 build /Users/arunrachuri/PR3CIO/packages/api-client
+> tsc -p tsconfig.json
+

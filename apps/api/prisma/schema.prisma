@@ -1,0 +1,355 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum UserRole {
+  LISTENER
+  ARTIST
+  ADMIN
+}
+
+enum TrackStatus {
+  DRAFT
+  PROCESSING
+  READY
+  PUBLISHED
+  BLOCKED
+}
+
+enum AIProjectStatus {
+  QUEUED
+  GENERATING
+  GENERATED
+  MERGING
+  COMPLETED
+  FAILED
+}
+
+enum ReportStatus {
+  OPEN
+  REVIEWED
+  RESOLVED
+  DISMISSED
+}
+
+enum StreamSource {
+  MOBILE_IOS
+  MOBILE_ANDROID
+  WEB
+}
+
+enum PayoutStatus {
+  ACCRUED
+  ELIGIBLE
+  HELD
+  PAID
+}
+
+model User {
+  id                       String              @id @default(cuid())
+  supabaseUserId           String              @unique
+  email                    String              @unique
+  role                     UserRole
+  displayName              String
+  avatarKey                String?
+  isBanned                 Boolean             @default(false)
+  stripeAccountId          String?
+  stripeOnboardingComplete Boolean             @default(false)
+  payoutsEnabled           Boolean             @default(false)
+  payoutEligibleAt         DateTime?
+  createdAt                DateTime            @default(now())
+  updatedAt                DateTime            @updatedAt
+  deletedAt                DateTime?
+
+  artistProfile            ArtistProfile?
+  tracks                   Track[]             @relation("ArtistTracks")
+  streamEvents             StreamEvent[]
+  followsAsFollower        Follow[]            @relation("FollowerRelation")
+  followersAsArtist        Follow[]            @relation("ArtistRelation")
+  likes                    Like[]
+  comments                 Comment[]
+  aiProjects               AIProject[]
+  reportsFiled             Report[]            @relation("ReporterReports")
+  reportsAgainst           Report[]            @relation("ArtistReports")
+  reviewedReports          Report[]            @relation("AdminReviewedReports")
+  playlists                Playlist[]
+  streamDailyCounters      StreamDailyCounter[] @relation("ArtistDailyCounters")
+  payoutLedgers            PayoutLedger[]
+  adminActions             AdminActionLog[]
+
+  @@index([role, createdAt])
+  @@index([isBanned, updatedAt])
+  @@map("Users")
+}
+
+model ArtistProfile {
+  id                  String   @id @default(cuid())
+  userId              String   @unique
+  stageName           String
+  bio                 String?
+  instagramUrl        String?
+  youtubeUrl          String?
+  tiktokUrl           String?
+  genres              String[]
+  onboardingCompleted Boolean  @default(false)
+  ogVerifiedAt        DateTime?
+  streamCount         BigInt   @default(0)
+  monthlyListeners    Int      @default(0)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  deletedAt           DateTime?
+
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([onboardingCompleted, updatedAt])
+  @@index([ogVerifiedAt])
+  @@index([stageName])
+  @@map("Artists")
+}
+
+model Track {
+  id                     String      @id @default(cuid())
+  artistId               String
+  title                  String
+  genre                  String
+  description            String?
+  isOriginal             Boolean     @default(false)
+  copyrightDeclared      Boolean     @default(false)
+  termsAccepted          Boolean     @default(false)
+  status                 TrackStatus @default(DRAFT)
+  masterAudioKey         String?
+  hlsMasterManifestKey   String?
+  coverImageKey          String?
+  durationSec            Int?
+  publishedAt            DateTime?
+  blockedAt              DateTime?
+  createdAt              DateTime    @default(now())
+  updatedAt              DateTime    @updatedAt
+  deletedAt              DateTime?
+
+  artist                 User        @relation("ArtistTracks", fields: [artistId], references: [id], onDelete: Cascade)
+  streamEvents           StreamEvent[]
+  likes                  Like[]
+  comments               Comment[]
+  playlistTracks         PlaylistTrack[]
+  reports                Report[]
+  streamDailyCounters    StreamDailyCounter[] @relation("TrackDailyCounters")
+
+  @@index([artistId, status, publishedAt])
+  @@index([status, publishedAt])
+  @@index([genre, status, publishedAt])
+  @@index([createdAt])
+  @@map("Tracks")
+}
+
+model StreamEvent {
+  id             String       @id @default(cuid())
+  trackId         String
+  userId          String?
+  sessionId       String
+  source          StreamSource
+  secondsPlayed   Int
+  completionRate  Float
+  completed       Boolean      @default(false)
+  playedAt        DateTime     @default(now())
+
+  track           Track        @relation(fields: [trackId], references: [id], onDelete: Cascade)
+  user            User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([trackId, playedAt])
+  @@index([userId, playedAt])
+  @@index([sessionId, trackId])
+  @@index([playedAt])
+  @@map("Streams")
+}
+
+model Follow {
+  followerId      String
+  artistId        String
+  createdAt       DateTime @default(now())
+
+  follower        User     @relation("FollowerRelation", fields: [followerId], references: [id], onDelete: Cascade)
+  artist          User     @relation("ArtistRelation", fields: [artistId], references: [id], onDelete: Cascade)
+
+  @@id([followerId, artistId])
+  @@index([artistId, createdAt])
+  @@map("Follows")
+}
+
+model Like {
+  userId          String
+  trackId         String
+  createdAt       DateTime @default(now())
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  track           Track    @relation(fields: [trackId], references: [id], onDelete: Cascade)
+
+  @@id([userId, trackId])
+  @@index([trackId, createdAt])
+  @@map("Likes")
+}
+
+model Comment {
+  id              String   @id @default(cuid())
+  trackId         String
+  userId          String?
+  body            String
+  isHidden        Boolean  @default(false)
+  hiddenReason    String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  deletedAt       DateTime?
+
+  track           Track    @relation(fields: [trackId], references: [id], onDelete: Cascade)
+  user            User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([trackId, createdAt])
+  @@index([userId, createdAt])
+  @@index([isHidden, createdAt])
+  @@map("Comments")
+}
+
+model AIProject {
+  id              String          @id @default(cuid())
+  artistId        String
+  mood            String
+  genre           String
+  theme           String
+  customLyrics    String?
+  generatedLyrics String?
+  instrumentalKey String?
+  vocalKey        String?
+  finalMasterKey  String?
+  metadataJson    Json?
+  status          AIProjectStatus @default(QUEUED)
+  errorMessage    String?
+  attemptCount    Int             @default(0)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  deletedAt       DateTime?
+
+  artist          User            @relation(fields: [artistId], references: [id], onDelete: Cascade)
+
+  @@index([artistId, status, createdAt])
+  @@index([status, updatedAt])
+  @@map("AI_Projects")
+}
+
+model Report {
+  id                String       @id @default(cuid())
+  reporterId        String?
+  trackId           String?
+  artistId          String?
+  reason            String
+  details           String?
+  status            ReportStatus @default(OPEN)
+  reviewedByAdminId String?
+  reviewedAt        DateTime?
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+
+  reporter          User?        @relation("ReporterReports", fields: [reporterId], references: [id], onDelete: SetNull)
+  track             Track?       @relation(fields: [trackId], references: [id], onDelete: SetNull)
+  artist            User?        @relation("ArtistReports", fields: [artistId], references: [id], onDelete: SetNull)
+  reviewedByAdmin   User?        @relation("AdminReviewedReports", fields: [reviewedByAdminId], references: [id], onDelete: SetNull)
+
+  @@index([status, createdAt])
+  @@index([trackId, status])
+  @@index([artistId, status])
+  @@map("Reports")
+}
+
+model Playlist {
+  id              String   @id @default(cuid())
+  ownerId         String
+  name            String
+  isPublic        Boolean  @default(false)
+  coverKey        String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  deletedAt       DateTime?
+
+  owner           User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  tracks          PlaylistTrack[]
+
+  @@index([ownerId, updatedAt])
+  @@index([isPublic, updatedAt])
+  @@map("Playlists")
+}
+
+model PlaylistTrack {
+  playlistId      String
+  trackId         String
+  position        Int
+  addedAt         DateTime @default(now())
+
+  playlist        Playlist @relation(fields: [playlistId], references: [id], onDelete: Cascade)
+  track           Track    @relation(fields: [trackId], references: [id], onDelete: Cascade)
+
+  @@id([playlistId, trackId])
+  @@unique([playlistId, position])
+  @@index([trackId, addedAt])
+  @@map("PlaylistTrack")
+}
+
+model StreamDailyCounter {
+  id               String   @id @default(cuid())
+  date             DateTime
+  trackId          String
+  artistId         String
+  totalStreams     Int      @default(0)
+  uniqueListeners  Int      @default(0)
+  completionRateAvg Float   @default(0)
+  revenueMicros    BigInt   @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  track            Track    @relation("TrackDailyCounters", fields: [trackId], references: [id], onDelete: Cascade)
+  artist           User     @relation("ArtistDailyCounters", fields: [artistId], references: [id], onDelete: Cascade)
+
+  @@unique([date, trackId])
+  @@index([artistId, date])
+  @@index([date, totalStreams])
+  @@map("StreamDailyCounter")
+}
+
+model PayoutLedger {
+  id               String       @id @default(cuid())
+  artistId         String
+  periodStart      DateTime
+  periodEnd        DateTime
+  amountMicros     BigInt
+  currency         String       @default("USD")
+  status           PayoutStatus @default(ACCRUED)
+  externalPayoutId String?
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  artist           User         @relation(fields: [artistId], references: [id], onDelete: Cascade)
+
+  @@unique([artistId, periodStart, periodEnd])
+  @@index([status, periodEnd])
+  @@map("PayoutLedger")
+}
+
+model AdminActionLog {
+  id               String   @id @default(cuid())
+  adminId          String?
+  actionType       String
+  targetType       String
+  targetId         String
+  payloadJson      Json?
+  createdAt        DateTime @default(now())
+
+  admin            User?    @relation(fields: [adminId], references: [id], onDelete: SetNull)
+
+  @@index([targetType, targetId, createdAt])
+  @@index([adminId, createdAt])
+  @@map("AdminActionLog")
+}
