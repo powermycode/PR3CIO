@@ -1,0 +1,51 @@
+import { Injectable } from "@nestjs/common";
+const user = await this.prisma.user.upsert({
+  where: {
+    supabaseUserId: dto.supabaseUserId
+  },
+  update: {
+    role: dto.role as UserRole,
+    displayName: dto.displayName ?? dto.email.split('@')[0] ?? 'User'
+  },
+  create: {
+    email: dto.email,
+    supabaseUserId: dto.supabaseUserId,
+    role: dto.role as UserRole,
+    displayName: dto.displayName ?? dto.email.split('@')[0] ?? 'User'
+  }
+});import type { UserRole } from "@pr3cio/types";
+import { PrismaService } from "../../infra/prisma.service";
+import type { SessionDto } from "./dto/session.dto";
+
+@Injectable()
+export class AuthService {
+  constructor(private readonly prisma: PrismaService) {}
+
+  async createOrUpdateSession(dto: SessionDto) {
+    const user = await this.prisma.user.upsert({
+      where: {
+        supabaseUserId: dto.supabaseUserId
+      },
+      update: {
+        
+        role: dto.role as UserRole,
+        displayName: dto.displayName ?? dto.email.split("@")[0] ?? "User"
+      },
+      create: { email: dto.email, ,
+        
+        supabaseUserId: dto.supabaseUserId,
+        
+        role: dto.role as UserRole,
+        displayName: dto.displayName ?? dto.email.split("@")[0] ?? "User"
+      }
+    });
+
+    return {
+      id: user.id,
+      supabaseUserId: user.supabaseUserId,
+      email: user.email,
+      role: user.role,
+      displayName: user.displayName
+    };
+  }
+}

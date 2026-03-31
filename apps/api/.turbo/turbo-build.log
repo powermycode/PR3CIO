@@ -3,3 +3,235 @@
 > @pr3cio/api@0.1.0 build /Users/arunrachuri/PR3CIO/apps/api
 > nest build
 
+[96msrc/infra/prisma.service.ts[0m:[93m2[0m:[93m10[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'PrismaClient'.
+
+[7m2[0m import { PrismaClient } from "@prisma/client";
+[7m [0m [91m         ~~~~~~~~~~~~[0m
+[96msrc/infra/prisma.service.ts[0m:[93m7[0m:[93m16[0m - [91merror[0m[90m TS2339: [0mProperty '$connect' does not exist on type 'PrismaService'.
+
+[7m7[0m     await this.$connect();
+[7m [0m [91m               ~~~~~~~~[0m
+[96msrc/infra/prisma.service.ts[0m:[93m11[0m:[93m16[0m - [91merror[0m[90m TS2339: [0mProperty '$disconnect' does not exist on type 'PrismaService'.
+
+[7m11[0m     await this.$disconnect();
+[7m  [0m [91m               ~~~~~~~~~~~[0m
+[96msrc/modules/admin/admin.service.ts[0m:[93m10[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'streamEvent' does not exist on type 'PrismaService'.
+
+[7m10[0m       this.prisma.streamEvent.count(),
+[7m  [0m [91m                  ~~~~~~~~~~~[0m
+[96msrc/modules/admin/admin.service.ts[0m:[93m11[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'user' does not exist on type 'PrismaService'.
+
+[7m11[0m       this.prisma.user.count({ where: { role: "ARTIST", isBanned: false, deletedAt: null } }),
+[7m  [0m [91m                  ~~~~[0m
+[96msrc/modules/admin/admin.service.ts[0m:[93m12[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'streamDailyCounter' does not exist on type 'PrismaService'.
+
+[7m12[0m       this.prisma.streamDailyCounter.aggregate({
+[7m  [0m [91m                  ~~~~~~~~~~~~~~~~~~[0m
+[96msrc/modules/admin/admin.service.ts[0m:[93m27[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'report' does not exist on type 'PrismaService'.
+
+[7m27[0m     return this.prisma.report.findMany({
+[7m  [0m [91m                       ~~~~~~[0m
+[96msrc/modules/admin/admin.service.ts[0m:[93m35[0m:[93m37[0m - [91merror[0m[90m TS2339: [0mProperty 'track' does not exist on type 'PrismaService'.
+
+[7m35[0m     const track = await this.prisma.track.findUnique({ where: { id: trackId }, select: { id: true } });
+[7m  [0m [91m                                    ~~~~~[0m
+[96msrc/modules/admin/admin.service.ts[0m:[93m40[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'track' does not exist on type 'PrismaService'.
+
+[7m40[0m     await this.prisma.track.update({
+[7m  [0m [91m                      ~~~~~[0m
+[96msrc/modules/admin/admin.service.ts[0m:[93m48[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'adminActionLog' does not exist on type 'PrismaService'.
+
+[7m48[0m     await this.prisma.adminActionLog.create({
+[7m  [0m [91m                      ~~~~~~~~~~~~~~[0m
+[96msrc/modules/admin/admin.service.ts[0m:[93m62[0m:[93m38[0m - [91merror[0m[90m TS2339: [0mProperty 'user' does not exist on type 'PrismaService'.
+
+[7m62[0m     const artist = await this.prisma.user.findUnique({
+[7m  [0m [91m                                     ~~~~[0m
+[96msrc/modules/admin/admin.service.ts[0m:[93m71[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty '$transaction' does not exist on type 'PrismaService'.
+
+[7m71[0m     await this.prisma.$transaction([
+[7m  [0m [91m                      ~~~~~~~~~~~~[0m
+[96msrc/modules/admin/admin.service.ts[0m:[93m72[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'user' does not exist on type 'PrismaService'.
+
+[7m72[0m       this.prisma.user.update({
+[7m  [0m [91m                  ~~~~[0m
+[96msrc/modules/admin/admin.service.ts[0m:[93m78[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'track' does not exist on type 'PrismaService'.
+
+[7m78[0m       this.prisma.track.updateMany({
+[7m  [0m [91m                  ~~~~~[0m
+[96msrc/modules/admin/admin.service.ts[0m:[93m90[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'adminActionLog' does not exist on type 'PrismaService'.
+
+[7m90[0m       this.prisma.adminActionLog.create({
+[7m  [0m [91m                  ~~~~~~~~~~~~~~[0m
+[96msrc/modules/ai/ai.service.ts[0m:[93m27[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'aIProject' does not exist on type 'PrismaService'.
+
+[7m27[0m     const project = await this.prisma.aIProject.create({
+[7m  [0m [91m                                      ~~~~~~~~~[0m
+[96msrc/modules/ai/ai.service.ts[0m:[93m54[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'aIProject' does not exist on type 'PrismaService'.
+
+[7m54[0m     const project = await this.prisma.aIProject.findUnique({
+[7m  [0m [91m                                      ~~~~~~~~~[0m
+[96msrc/modules/ai/ai.service.ts[0m:[93m79[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'aIProject' does not exist on type 'PrismaService'.
+
+[7m79[0m     await this.prisma.aIProject.update({
+[7m  [0m [91m                      ~~~~~~~~~[0m
+[96msrc/modules/ai/ai.service.ts[0m:[93m90[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'aIProject' does not exist on type 'PrismaService'.
+
+[7m90[0m     await this.prisma.aIProject.update({
+[7m  [0m [91m                      ~~~~~~~~~[0m
+[96msrc/modules/ai/ai.service.ts[0m:[93m126[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'aIProject' does not exist on type 'PrismaService'.
+
+[7m126[0m     await this.prisma.aIProject.update({
+[7m   [0m [91m                      ~~~~~~~~~[0m
+[96msrc/modules/artists/artists.service.ts[0m:[93m15[0m:[93m36[0m - [91merror[0m[90m TS2339: [0mProperty 'user' does not exist on type 'PrismaService'.
+
+[7m15[0m     const user = await this.prisma.user.findUnique({
+[7m  [0m [91m                                   ~~~~[0m
+[96msrc/modules/artists/artists.service.ts[0m:[93m28[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'artistProfile' does not exist on type 'PrismaService'.
+
+[7m28[0m     return this.prisma.artistProfile.upsert({
+[7m  [0m [91m                       ~~~~~~~~~~~~~[0m
+[96msrc/modules/artists/artists.service.ts[0m:[93m53[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'artistProfile' does not exist on type 'PrismaService'.
+
+[7m53[0m     const profile = await this.prisma.artistProfile.findUnique({ where: { userId }, select: { id: true } });
+[7m  [0m [91m                                      ~~~~~~~~~~~~~[0m
+[96msrc/modules/artists/artists.service.ts[0m:[93m58[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'artistProfile' does not exist on type 'PrismaService'.
+
+[7m58[0m     return this.prisma.artistProfile.update({
+[7m  [0m [91m                       ~~~~~~~~~~~~~[0m
+[96msrc/modules/artists/artists.service.ts[0m:[93m65[0m:[93m38[0m - [91merror[0m[90m TS2339: [0mProperty 'user' does not exist on type 'PrismaService'.
+
+[7m65[0m     const artist = await this.prisma.user.findUnique({
+[7m  [0m [91m                                     ~~~~[0m
+[96msrc/modules/auth/auth.service.ts[0m:[93m11[0m:[93m36[0m - [91merror[0m[90m TS2339: [0mProperty 'user' does not exist on type 'PrismaService'.
+
+[7m11[0m     const user = await this.prisma.user.upsert({
+[7m  [0m [91m                                   ~~~~[0m
+[96msrc/modules/reports/reports.service.ts[0m:[93m20[0m:[93m43[0m - [91merror[0m[90m TS2339: [0mProperty 'report' does not exist on type 'PrismaService'.
+
+[7m20[0m     const recentCount = await this.prisma.report.count({
+[7m  [0m [91m                                          ~~~~~~[0m
+[96msrc/modules/reports/reports.service.ts[0m:[93m31[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'report' does not exist on type 'PrismaService'.
+
+[7m31[0m     return this.prisma.report.create({
+[7m  [0m [91m                       ~~~~~~[0m
+[96msrc/modules/social/social.service.ts[0m:[93m9[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'follow' does not exist on type 'PrismaService'.
+
+[7m9[0m     const existing = await this.prisma.follow.findUnique({
+[7m [0m [91m                                       ~~~~~~[0m
+[96msrc/modules/social/social.service.ts[0m:[93m14[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'follow' does not exist on type 'PrismaService'.
+
+[7m14[0m       await this.prisma.follow.delete({
+[7m  [0m [91m                        ~~~~~~[0m
+[96msrc/modules/social/social.service.ts[0m:[93m20[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'follow' does not exist on type 'PrismaService'.
+
+[7m20[0m     await this.prisma.follow.create({
+[7m  [0m [91m                      ~~~~~~[0m
+[96msrc/modules/social/social.service.ts[0m:[93m27[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'like' does not exist on type 'PrismaService'.
+
+[7m27[0m     const existing = await this.prisma.like.findUnique({
+[7m  [0m [91m                                       ~~~~[0m
+[96msrc/modules/social/social.service.ts[0m:[93m32[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'like' does not exist on type 'PrismaService'.
+
+[7m32[0m       await this.prisma.like.delete({ where: { userId_trackId: { userId, trackId } } });
+[7m  [0m [91m                        ~~~~[0m
+[96msrc/modules/social/social.service.ts[0m:[93m36[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'like' does not exist on type 'PrismaService'.
+
+[7m36[0m     await this.prisma.like.create({ data: { userId, trackId } });
+[7m  [0m [91m                      ~~~~[0m
+[96msrc/modules/social/social.service.ts[0m:[93m41[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'comment' does not exist on type 'PrismaService'.
+
+[7m41[0m     return this.prisma.comment.create({
+[7m  [0m [91m                       ~~~~~~~[0m
+[96msrc/modules/social/social.service.ts[0m:[93m51[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'comment' does not exist on type 'PrismaService'.
+
+[7m51[0m     return this.prisma.comment.findMany({
+[7m  [0m [91m                       ~~~~~~~[0m
+[96msrc/modules/social/social.service.ts[0m:[93m66[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'track' does not exist on type 'PrismaService'.
+
+[7m66[0m       this.prisma.track.findMany({
+[7m  [0m [91m                  ~~~~~[0m
+[96msrc/modules/social/social.service.ts[0m:[93m71[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'track' does not exist on type 'PrismaService'.
+
+[7m71[0m       this.prisma.track.findMany({
+[7m  [0m [91m                  ~~~~~[0m
+[96msrc/modules/social/social.service.ts[0m:[93m76[0m:[93m19[0m - [91merror[0m[90m TS2339: [0mProperty 'follow' does not exist on type 'PrismaService'.
+
+[7m76[0m       this.prisma.follow.findMany({
+[7m  [0m [91m                  ~~~~~~[0m
+[96msrc/modules/social/social.service.ts[0m:[93m83[0m:[93m27[0m - [91merror[0m[90m TS2339: [0mProperty 'track' does not exist on type 'PrismaService'.
+
+[7m83[0m       ? await this.prisma.track.findMany({
+[7m  [0m [91m                          ~~~~~[0m
+[96msrc/modules/streams/streams.service.ts[0m:[93m15[0m:[93m41[0m - [91merror[0m[90m TS2339: [0mProperty 'streamEvent' does not exist on type 'PrismaService'.
+
+[7m15[0m     const duplicate = await this.prisma.streamEvent.findFirst({
+[7m  [0m [91m                                        ~~~~~~~~~~~[0m
+[96msrc/modules/streams/streams.service.ts[0m:[93m34[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'streamEvent' does not exist on type 'PrismaService'.
+
+[7m34[0m     await this.prisma.streamEvent.create({
+[7m  [0m [91m                      ~~~~~~~~~~~[0m
+[96msrc/modules/tracks/stream-manifest.service.ts[0m:[93m20[0m:[93m37[0m - [91merror[0m[90m TS2339: [0mProperty 'track' does not exist on type 'PrismaService'.
+
+[7m20[0m     const track = await this.prisma.track.findUnique({
+[7m  [0m [91m                                    ~~~~~[0m
+[96msrc/modules/tracks/tracks.service.ts[0m:[93m27[0m:[93m37[0m - [91merror[0m[90m TS2339: [0mProperty 'track' does not exist on type 'PrismaService'.
+
+[7m27[0m     const track = await this.prisma.track.create({
+[7m  [0m [91m                                    ~~~~~[0m
+[96msrc/modules/tracks/tracks.service.ts[0m:[93m55[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'track' does not exist on type 'PrismaService'.
+
+[7m55[0m     await this.prisma.track.update({
+[7m  [0m [91m                      ~~~~~[0m
+[96msrc/modules/tracks/tracks.service.ts[0m:[93m70[0m:[93m37[0m - [91merror[0m[90m TS2339: [0mProperty 'track' does not exist on type 'PrismaService'.
+
+[7m70[0m     const track = await this.prisma.track.findUnique({ where: { id: trackId } });
+[7m  [0m [91m                                    ~~~~~[0m
+[96msrc/modules/tracks/tracks.service.ts[0m:[93m83[0m:[93m23[0m - [91merror[0m[90m TS2339: [0mProperty 'track' does not exist on type 'PrismaService'.
+
+[7m83[0m     await this.prisma.track.update({
+[7m  [0m [91m                      ~~~~~[0m
+[96msrc/modules/tracks/tracks.service.ts[0m:[93m103[0m:[93m37[0m - [91merror[0m[90m TS2339: [0mProperty 'track' does not exist on type 'PrismaService'.
+
+[7m103[0m     const track = await this.prisma.track.findUnique({
+[7m   [0m [91m                                    ~~~~~[0m
+[96msrc/modules/tracks/tracks.service.ts[0m:[93m128[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'artistProfile' does not exist on type 'PrismaService'.
+
+[7m128[0m     const profile = await this.prisma.artistProfile.findUnique({
+[7m   [0m [91m                                      ~~~~~~~~~~~~~[0m
+[96msrc/modules/tracks/tracks.service.ts[0m:[93m141[0m:[93m39[0m - [91merror[0m[90m TS2339: [0mProperty 'track' does not exist on type 'PrismaService'.
+
+[7m141[0m     const updated = await this.prisma.track.update({
+[7m   [0m [91m                                      ~~~~~[0m
+[96msrc/modules/tracks/tracks.service.ts[0m:[93m153[0m:[93m25[0m - [91merror[0m[90m TS2339: [0mProperty 'artistProfile' does not exist on type 'PrismaService'.
+
+[7m153[0m       await this.prisma.artistProfile.update({
+[7m   [0m [91m                        ~~~~~~~~~~~~~[0m
+[96msrc/modules/users/users.service.ts[0m:[93m10[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'user' does not exist on type 'PrismaService'.
+
+[7m10[0m     return this.prisma.user.findUnique({
+[7m  [0m [91m                       ~~~~[0m
+[96msrc/modules/users/users.service.ts[0m:[93m24[0m:[93m40[0m - [91merror[0m[90m TS2339: [0mProperty 'user' does not exist on type 'PrismaService'.
+
+[7m24[0m     const existing = await this.prisma.user.findUnique({ where: { id: userId }, select: { id: true } });
+[7m  [0m [91m                                       ~~~~[0m
+[96msrc/modules/users/users.service.ts[0m:[93m29[0m:[93m24[0m - [91merror[0m[90m TS2339: [0mProperty 'user' does not exist on type 'PrismaService'.
+
+[7m29[0m     return this.prisma.user.update({
+[7m  [0m [91m                       ~~~~[0m
+[96msrc/prisma/prisma.service.ts[0m:[93m2[0m:[93m10[0m - [91merror[0m[90m TS2305: [0mModule '"@prisma/client"' has no exported member 'PrismaClient'.
+
+[7m2[0m import { PrismaClient } from '@prisma/client';
+[7m [0m [91m         ~~~~~~~~~~~~[0m
+[96msrc/prisma/prisma.service.ts[0m:[93m10[0m:[93m16[0m - [91merror[0m[90m TS2339: [0mProperty '$connect' does not exist on type 'PrismaService'.
+
+[7m10[0m     await this.$connect();
+[7m  [0m [91m               ~~~~~~~~[0m
+[96msrc/prisma/prisma.service.ts[0m:[93m14[0m:[93m16[0m - [91merror[0m[90m TS2339: [0mProperty '$disconnect' does not exist on type 'PrismaService'.
+
+[7m14[0m     await this.$disconnect();
+[7m  [0m [91m               ~~~~~~~~~~~[0m
+
+Found 57 error(s).
+
+[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m

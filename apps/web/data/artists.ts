@@ -3,14 +3,17 @@ export interface Artist {
   slug: string;
   genre: string;
   listeners: string;
-  country: string;
+  country?: string;
   image: string;
   bio?: string;
   verified?: boolean;
   sponsored?: boolean;
+  followers?: string;
+  tracks?: number;
   featuredTrack?: {
     title: string;
     audioUrl: string;
+    cover?: string;
   };
 }
 
@@ -27,8 +30,8 @@ export const artists: Artist[] = [
     sponsored: true,
     featuredTrack: {
       title: "Edo Soul",
-      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
-    }
+      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+    },
   },
   {
     name: "Artizz",
@@ -42,8 +45,8 @@ export const artists: Artist[] = [
     sponsored: true,
     featuredTrack: {
       title: "Artizz Flow",
-      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
-    }
+      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+    },
   },
   {
     name: "Lesj",
@@ -57,7 +60,44 @@ export const artists: Artist[] = [
     sponsored: true,
     featuredTrack: {
       title: "Lesj Vibe",
-      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3"
-    }
-  }
+      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+    },
+  },
+  {
+    name: "Nani",
+    slug: "nani",
+    genre: "Hip Hop",
+    listeners: "156K",
+    country: "USA",
+    image: "/artists/nani.jpg",
+    bio: "Nani is a rising star with a unique sound that blends classic Hip Hop elements with a modern, melodic twist.",
+    verified: true,
+    sponsored: false,
+    featuredTrack: {
+      title: "Muse's Revenge",
+      audioUrl: "/uploads/track_ew2zn0n4-nani-ojz-2-17-23.mp3",
+    },
+  },
+  {
+    name: "Don Julio",
+    slug: "don-julio",
+    genre: "Hip Hop",
+    listeners: "128K",
+    country: "USA",
+    image: "/artists/don-julio.jpg",
+    bio: "Don Julio is a master of rhythm and flow, bringing a unique perspective to the modern hip hop landscape.",
+    verified: true,
+    sponsored: false,
+  },
+  {
+    name: "Casanova33",
+    slug: "casanova33",
+    genre: "Hip Hop",
+    listeners: "95K",
+    country: "USA",
+    image: "/artists/casanova33.jpg",
+    bio: "Casanova33 blends infectious energy with compelling storytelling, carving out a distinct space in the urban music scene.",
+    verified: true,
+    sponsored: false,
+  },
 ];

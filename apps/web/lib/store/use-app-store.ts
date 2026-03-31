@@ -1,10 +1,10 @@
-import { create } from 'zustand';
-import { Track } from '../demo-tracks';
+import { create } from "zustand";
+import { Track } from "../demo-tracks";
 
 interface User {
   id: string;
   email: string;
-  role: 'listener' | 'artist' | 'admin';
+  role: "listener" | "artist" | "admin";
 }
 
 interface PlayerState {
@@ -22,6 +22,8 @@ interface AppState {
   // Track State
   currentTrack: Track | null;
   setCurrentTrack: (track: Track | null) => void;
+  uploadedTracks: Track[];
+  addUploadedTrack: (track: Track) => void;
 
   // Player State
   playerState: PlayerState;
@@ -35,6 +37,11 @@ export const useAppStore = create<AppState>((set) => ({
 
   currentTrack: null,
   setCurrentTrack: (track) => set({ currentTrack: track }),
+  uploadedTracks: [],
+  addUploadedTrack: (track) =>
+    set((prev) => ({
+      uploadedTracks: [track, ...prev.uploadedTracks],
+    })),
 
   playerState: {
     isPlaying: false,
@@ -42,12 +49,15 @@ export const useAppStore = create<AppState>((set) => ({
     progress: 0,
     duration: 0,
   },
-  setPlayerState: (state) => 
-    set((prev) => ({ 
-      playerState: { ...prev.playerState, ...state } 
+  setPlayerState: (state) =>
+    set((prev) => ({
+      playerState: { ...prev.playerState, ...state },
     })),
-  togglePlay: () => 
-    set((prev) => ({ 
-      playerState: { ...prev.playerState, isPlaying: !prev.playerState.isPlaying } 
+  togglePlay: () =>
+    set((prev) => ({
+      playerState: {
+        ...prev.playerState,
+        isPlaying: !prev.playerState.isPlaying,
+      },
     })),
 }));

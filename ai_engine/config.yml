@@ -1,0 +1,9 @@
+output_root: ../ai_outputs
+
+models:
+  lyrics: "mistral"
+  music: "facebook/musicgen-medium"
+
+defaults:
+  tempo: 95
+  duration: 45

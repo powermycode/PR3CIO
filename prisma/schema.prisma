@@ -1,0 +1,149 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             Int            @id @default(autoincrement())
+  email          String         @unique
+  supabaseUserId String?        @unique
+  displayName    String?
+  name           String?
+  avatarKey      String?
+  role           String         @default("LISTENER")
+  isBanned       Boolean        @default(false)
+  deletedAt      DateTime?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  artistProfile  ArtistProfile?
+  reports        Report[]
+  comments       Comment[]
+  likes          Like[]
+  follows        Follow[]       @relation("UserFollows")
+  followedBy     Follow[]       @relation("UserFollowedBy")
+}
+
+model ArtistProfile {
+  id                  Int       @id @default(autoincrement())
+  userId              Int       @unique
+  user                User      @relation(fields: [userId], references: [id])
+  stageName           String?
+  bio                 String?
+  instagramUrl        String?
+  youtubeUrl          String?
+  isBanned            Boolean   @default(false)
+  onboardingCompleted Boolean   @default(false)
+  ogVerifiedAt        DateTime?
+  tracks              Track[]
+}
+
+model Track {
+  id                   Int           @id @default(autoincrement())
+  title                String
+  artistId             Int
+  artistProfile        ArtistProfile @relation(fields: [artistId], references: [id])
+  genre                String?
+  status               String        @default("DRAFT")
+  description          String?
+  masterAudioKey       String?
+  hlsMasterManifestKey String?
+  isOriginal           Boolean       @default(false)
+  copyrightDeclared    Boolean       @default(false)
+  termsAccepted        Boolean       @default(false)
+  publishedAt          DateTime?
+  blockedAt            DateTime?
+  deletedAt            DateTime?
+  createdAt            DateTime      @default(now())
+  likes                Like[]
+  comments             Comment[]
+}
+
+model StreamEvent {
+  id             Int      @id @default(autoincrement())
+  trackId        Int
+  userId         Int
+  sessionId      String?
+  source         String?
+  secondsPlayed  Int?
+  completionRate Float?
+  completed      Boolean? @default(false)
+  playedAt       DateTime @default(now())
+  timestamp      DateTime @default(now())
+}
+
+model StreamDailyCounter {
+  id              Int      @id @default(autoincrement())
+  date            DateTime
+  trackId         Int
+  totalStreams    Int      @default(0)
+  uniqueListeners Int      @default(0)
+  revenueMicros   BigInt   @default(0)
+
+  @@unique([date, trackId], name: "date_trackId")
+}
+
+model Report {
+  id         Int      @id @default(autoincrement())
+  reporterId Int
+  user       User     @relation(fields: [reporterId], references: [id])
+  trackId    String?
+  artistId   String?
+  reason     String
+  details    String?
+  status     String   @default("OPEN")
+  createdAt  DateTime @default(now())
+}
+
+model AdminActionLog {
+  id          Int      @id @default(autoincrement())
+  adminId     Int
+  actionType  String
+  targetType  String
+  targetId    Int
+  payloadJson Json
+  createdAt   DateTime @default(now())
+}
+
+model Follow {
+  id          Int      @id @default(autoincrement())
+  followerId  Int
+  follower    User     @relation("UserFollows", fields: [followerId], references: [id])
+  artistId    Int
+  artist      User     @relation("UserFollowedBy", fields: [artistId], references: [id])
+  createdAt   DateTime @default(now())
+
+  @@unique([followerId, artistId], name: "followerId_artistId")
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  trackId   Int
+  track     Track    @relation(fields: [trackId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, trackId], name: "userId_trackId")
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  content   String
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  trackId   Int
+  track     Track    @relation(fields: [trackId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model aiProject {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  prompt    String?
+  response  String?
+  createdAt DateTime @default(now())
+}

@@ -19,5 +19,26 @@ export const artists = [
     genre: "Hip Hop",
     listeners: "269K",
     image: "/artists/lesj.png",
+  },
+  {
+    slug: "nani",
+    name: "Nani",
+    genre: "Hip Hop",
+    listeners: "156K",
+    image: "/artists/nani.jpg",
+  },
+  {
+    slug: "don-julio",
+    name: "Don Julio",
+    genre: "Hip Hop",
+    listeners: "128K",
+    image: "/artists/don-julio.jpg",
+  },
+  {
+    slug: "casanova33",
+    name: "Casanova33",
+    genre: "Hip Hop",
+    listeners: "95K",
+    image: "/artists/casanova33.jpg",
   }
 ];

@@ -1,18 +1,27 @@
-'use client';
+"use client";
 
 import React from "react";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import NavSidebar from "./NavSidebar";
+import PremiumNavSidebar from "./PremiumNavSidebar";
 import MobileNav from "./MobileNav";
-import MusicPlayer from "./MusicPlayer";
+import PremiumMusicPlayer from "./PremiumMusicPlayer";
 import { AudioProvider } from "../lib/audio-context";
 import Link from "next/link";
 
-export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
+export default function LayoutWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const pathname = usePathname();
-  const isAuthPage = pathname?.startsWith('/login') || pathname?.startsWith('/signup');
-  const isCleanPage = pathname?.startsWith('/presentation') || pathname?.startsWith('/luis') || pathname?.startsWith('/investors') || pathname?.startsWith('/strategy');
+  const isAuthPage =
+    pathname?.startsWith("/login") || pathname?.startsWith("/signup");
+  const isCleanPage =
+    pathname?.startsWith("/presentation") ||
+    pathname?.startsWith("/luis") ||
+    pathname?.startsWith("/investors") ||
+    pathname?.startsWith("/strategy");
 
   if (isAuthPage) {
     return (
@@ -50,24 +59,26 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
   return (
     <AudioProvider>
       <div className="flex min-h-screen no-scrollbar bg-background text-text-primary">
-        {/* Desktop Sidebar */}
-        <NavSidebar />
+        <PremiumNavSidebar />
 
-        {/* Main Content Area */}
         <div className="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto overflow-x-hidden relative no-scrollbar">
-          {/* Mobile Top Logo Bar */}
           <header className="md:hidden flex items-center justify-between py-2 px-4 h-14 sticky top-0 bg-background/90 backdrop-blur-xl z-40 border-b border-white/5">
             <Link href="/" className="flex items-center gap-2 group">
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.2 }}
               >
-                <img src="/logo.webp" alt="PR3CIO" className="w-10 h-10 object-contain" />
+                <img
+                  src="/logo.webp"
+                  alt="PR3CIO"
+                  className="w-10 h-10 object-contain"
+                />
               </motion.div>
+              <span className="text-lg font-black">PR3CIO</span>
             </Link>
           </header>
 
-          <main className="flex-1 w-full max-w-[1400px] mx-auto pb-32 md:pb-32">
+          <main className="flex-1 w-full max-w-[1400px] mx-auto pb-32 md:pb-36">
             <AnimatePresence mode="wait">
               <motion.div
                 key={pathname}
@@ -83,12 +94,10 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
           </main>
         </div>
 
-        {/* Desktop Music Player */}
         <div className="hidden md:block">
-          <MusicPlayer />
+          <PremiumMusicPlayer />
         </div>
 
-        {/* Mobile Bottom Navigation */}
         <MobileNav />
       </div>
     </AudioProvider>
