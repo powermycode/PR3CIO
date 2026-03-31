@@ -1,5 +1,28 @@
 import Stripe from "stripe";
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2025-01-27-acacia",
-});
+let stripeInstance: Stripe | null = null;
+
+export function getStripe(): Stripe {
+  if (!stripeInstance) {
+    const apiKey = process.env.STRIPE_SECRET_KEY;
+    if (!apiKey) {
+      throw new Error("Missing STRIPE_SECRET_KEY environment variable");
+    }
+    stripeInstance = new Stripe(apiKey, {
+      apiVersion: "2026-03-25.dahlia",
+    });
+  }
+  return stripeInstance;
+}
+
+export const stripe = {
+  get customers() {
+    return getStripe().customers;
+  },
+  get checkout() {
+    return getStripe().checkout;
+  },
+  get webhooks() {
+    return getStripe().webhooks;
+  },
+};
