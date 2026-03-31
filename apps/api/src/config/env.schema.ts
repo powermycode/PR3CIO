@@ -19,7 +19,9 @@ export const envSchema = z.object({
   SUNO_MODE: z.enum(["real", "mock"]).default("mock"),
   HLS_SIGNED_URL_TTL_SECONDS: z.coerce.number().default(120),
   PLAYBACK_TOKEN_SECRET: z.string().min(8),
-  PAYOUTS_ENABLED: z.coerce.boolean().default(false)
+  PAYOUTS_ENABLED: z.coerce.boolean().default(false),
+  STRIPE_SECRET_KEY: z.string().min(1),
+  STRIPE_WEBHOOK_SECRET: z.string().min(1)
 });
 
 export type Env = z.infer<typeof envSchema>;

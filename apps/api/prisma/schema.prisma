@@ -51,6 +51,19 @@ enum PayoutStatus {
   PAID
 }
 
+enum SubscriptionStatus {
+  ACTIVE
+  PAST_DUE
+  CANCELED
+  UNPAID
+  TRIALING
+}
+
+enum PaymentType {
+  TIP
+  SUBSCRIPTION
+}
+
 model User {
   id                       String              @id @default(cuid())
   supabaseUserId           String              @unique
@@ -60,6 +73,8 @@ model User {
   avatarKey                String?
   isBanned                 Boolean             @default(false)
   stripeAccountId          String?
+  stripeCustomerId         String?             @unique
+  isSupporter              Boolean             @default(false)
   stripeOnboardingComplete Boolean             @default(false)
   payoutsEnabled           Boolean             @default(false)
   payoutEligibleAt         DateTime?
@@ -82,6 +97,8 @@ model User {
   streamDailyCounters      StreamDailyCounter[] @relation("ArtistDailyCounters")
   payoutLedgers            PayoutLedger[]
   adminActions             AdminActionLog[]
+  subscriptions            Subscription[]      @relation("UserSubscriptions")
+  payments                 Payment[]           @relation("UserPayments")
 
   @@index([role, createdAt])
   @@index([isBanned, updatedAt])
@@ -101,16 +118,53 @@ model ArtistProfile {
   ogVerifiedAt        DateTime?
   streamCount         BigInt   @default(0)
   monthlyListeners    Int      @default(0)
+  stripeAccountId     String?
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
   deletedAt           DateTime?
 
   user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subscriptions       Subscription[] @relation("ArtistSubscriptions")
+  payments            Payment[]      @relation("ArtistPayments")
 
   @@index([onboardingCompleted, updatedAt])
   @@index([ogVerifiedAt])
   @@index([stageName])
   @@map("Artists")
+}
+
+model Subscription {
+  id          String             @id @default(cuid())
+  userId      String
+  artistId    String
+  stripeSubId String             @unique
+  status      SubscriptionStatus @default(ACTIVE)
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+
+  user        User               @relation("UserSubscriptions", fields: [userId], references: [id], onDelete: Cascade)
+  artist      ArtistProfile      @relation("ArtistSubscriptions", fields: [artistId], references: [id], onDelete: Cascade)
+
+  @@index([userId, artistId])
+  @@index([stripeSubId])
+  @@map("Subscriptions")
+}
+
+model Payment {
+  id                    String      @id @default(cuid())
+  userId                String
+  artistId              String
+  amount                Int
+  type                  PaymentType
+  stripePaymentIntentId String?     @unique
+  createdAt             DateTime    @default(now())
+
+  user                  User          @relation("UserPayments", fields: [userId], references: [id], onDelete: Cascade)
+  artist                ArtistProfile @relation("ArtistPayments", fields: [artistId], references: [id], onDelete: Cascade)
+
+  @@index([userId, artistId])
+  @@index([stripePaymentIntentId])
+  @@map("Payments")
 }
 
 model Track {

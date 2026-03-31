@@ -15,22 +15,59 @@ model User {
   image         String?
   emailVerified DateTime?
   role          String    @default("LISTENER") // "LISTENER" or "ARTIST"
+  stripeCustomerId String? @unique
+  isSupporter   Boolean   @default(false)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
   artistProfile   ArtistProfile?
   listenerProfile ListenerProfile?
   comments        Comment[]
+  subscriptions   Subscription[]
+  payments        Payment[]
 }
 
 model ArtistProfile {
   id               String   @id @default(cuid())
   userId           String   @unique
   user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stageName        String?
   bio              String?
-  genres           String // Comma separated or JSON string
+  avatar           String?
+  genres           String?
+  instagramUrl      String?
+  youtubeUrl       String?
   monthlyListeners Int      @default(0)
+  stripeAccountId  String?
   tracks           Track[]
+  subscriptions    Subscription[]
+  payments         Payment[]
+}
+
+model Subscription {
+  id          String   @id @default(cuid())
+  userId      String
+  artistId    String
+  stripeSubId String   @unique
+  status      String   @default("ACTIVE")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  artist      ArtistProfile @relation(fields: [artistId], references: [id], onDelete: Cascade)
+}
+
+model Payment {
+  id                    String   @id @default(cuid())
+  userId                String
+  artistId              String
+  amount                Int
+  type                  String   // "TIP" or "SUBSCRIPTION"
+  stripePaymentIntentId String?  @unique
+  createdAt             DateTime @default(now())
+
+  user                  User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  artist                ArtistProfile @relation(fields: [artistId], references: [id], onDelete: Cascade)
 }
 
 model ListenerProfile {

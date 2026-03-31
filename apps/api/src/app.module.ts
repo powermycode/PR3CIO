@@ -16,6 +16,7 @@ import { SocialModule } from "./modules/social/social.module";
 import { StreamsModule } from "./modules/streams/streams.module";
 import { ReportsModule } from "./modules/reports/reports.module";
 import { AdminModule } from "./modules/admin/admin.module";
+import { StripeModule } from "./modules/stripe/stripe.module";
 
 @Module({
   imports: [
@@ -42,7 +43,8 @@ import { AdminModule } from "./modules/admin/admin.module";
     SocialModule,
     StreamsModule,
     ReportsModule,
-    AdminModule
+    AdminModule,
+    StripeModule
   ]
 })
 export class AppModule {}
