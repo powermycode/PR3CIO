@@ -66,15 +66,15 @@ export const artists: Artist[] = [
   {
     name: "Nani",
     slug: "nani",
-    genre: "Hip Hop",
+    genre: "RnB",
     listeners: "156K",
     country: "USA",
     image: "/artists/nani.jpg",
-    bio: "Nani is a rising star with a unique sound that blends classic Hip Hop elements with a modern, melodic twist.",
+    bio: "Nani is a rising star with a unique sound that blends classic RnB elements with a modern, melodic twist.",
     verified: true,
     sponsored: false,
     featuredTrack: {
-      title: "Muse's Revenge",
+      title: "Nani Ojz 2.17.23",
       audioUrl: "/uploads/track_ew2zn0n4-nani-ojz-2-17-23.mp3",
     },
   },

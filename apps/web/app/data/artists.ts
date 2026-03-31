@@ -23,7 +23,7 @@ export const artists = [
   {
     slug: "nani",
     name: "Nani",
-    genre: "Hip Hop",
+    genre: "RnB",
     listeners: "156K",
     image: "/artists/nani.jpg",
   },

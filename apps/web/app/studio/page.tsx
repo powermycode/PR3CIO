@@ -1,14 +1,11 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Upload,
   BarChart3,
-  Users,
-  PlayCircle,
   Music,
-  Sparkles,
   Settings,
   Clock,
   TrendingUp,
@@ -18,7 +15,11 @@ import {
   Loader2,
   X,
   Image as ImageIcon,
+  PlayCircle,
+  Users,
 } from "lucide-react";
+import { UploadButton } from "@uploadthing/react";
+import type { AppRouter } from "../api/uploadthing/route";
 import TrackCard from "../../components/TrackCard";
 import { useAppStore } from "../../lib/store/use-app-store";
 import { demoTracks } from "../../lib/demo-tracks";
@@ -32,8 +33,8 @@ export default function PremiumStudioPage() {
   const [title, setTitle] = useState("");
   const [genre, setGenre] = useState("Hip Hop");
   const [description, setDescription] = useState("");
-  const [audioFile, setAudioFile] = useState<File | null>(null);
-  const [coverFile, setCoverFile] = useState<File | null>(null);
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const [coverUrl, setCoverUrl] = useState<string | null>(null);
   const [coverPreview, setCoverPreview] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadStatus, setUploadStatus] = useState<
@@ -52,9 +53,6 @@ export default function PremiumStudioPage() {
 
   const uploadedTracks = useAppStore((state) => state.uploadedTracks);
   const addUploadedTrack = useAppStore((state) => state.addUploadedTrack);
-
-  const audioInputRef = useRef<HTMLInputElement>(null);
-  const coverInputRef = useRef<HTMLInputElement>(null);
 
   const allTracks = [...tracks, ...uploadedTracks, ...demoTracks.slice(0, 3)];
 
@@ -95,23 +93,6 @@ export default function PremiumStudioPage() {
     { id: "profile" as const, label: "Profile", icon: Settings },
   ];
 
-  const handleAudioSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setAudioFile(file);
-    }
-  };
-
-  const handleCoverSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setCoverFile(file);
-      const reader = new FileReader();
-      reader.onload = (e) => setCoverPreview(e.target?.result as string);
-      reader.readAsDataURL(file);
-    }
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -120,8 +101,8 @@ export default function PremiumStudioPage() {
       setUploadStatus("error");
       return;
     }
-    if (!audioFile) {
-      setErrorMessage("Please select an audio file");
+    if (!audioUrl) {
+      setErrorMessage("Please upload an audio file first");
       setUploadStatus("error");
       return;
     }
@@ -131,80 +112,40 @@ export default function PremiumStudioPage() {
     setErrorMessage("");
 
     try {
-      const formData = new FormData();
-      formData.append("audioFile", audioFile);
-
-      const uploadRes = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!uploadRes.ok) {
-        const text = await uploadRes.text();
-        console.error("[/api/upload] Non-JSON response:", text);
-        throw new Error(`Upload failed (${uploadRes.status}): ${text}`);
-      }
-
-      const contentType = uploadRes.headers.get("content-type") || "";
-      if (!contentType.includes("application/json")) {
-        const text = await uploadRes.text();
-        console.error(
-          "[/api/upload] Expected JSON but got:",
-          contentType,
-          text,
-        );
-        throw new Error("Server returned HTML instead of JSON");
-      }
-
-      const uploadData = await uploadRes.json();
-      console.log("[/api/upload] Response:", uploadData);
-
-      if (!uploadData.success) {
-        throw new Error(uploadData.error || "Upload failed");
-      }
-
-      const trackRes = await fetch("/api/track", {
+      const res = await fetch("/api/track", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           title: title.trim(),
-          audioUrl: uploadData.fileUrl,
+          audioUrl,
           artistId: DEMO_ARTIST_ID,
-          coverUrl: coverPreview || null,
+          coverUrl: coverUrl || null,
           genre,
           description: description.trim() || null,
         }),
       });
 
-      if (!trackRes.ok) {
-        const text = await trackRes.text();
-        console.error("[/api/track] Non-JSON response:", text);
-        throw new Error(`Failed to create track (${trackRes.status}): ${text}`);
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(`Failed to create track (${res.status}): ${text}`);
       }
 
-      const trackContentType = trackRes.headers.get("content-type") || "";
-      if (!trackContentType.includes("application/json")) {
-        const text = await trackRes.text();
-        console.error(
-          "[/api/track] Expected JSON but got:",
-          trackContentType,
-          text,
-        );
+      const contentType = res.headers.get("content-type") || "";
+      if (!contentType.includes("application/json")) {
         throw new Error("Server returned HTML instead of JSON");
       }
 
-      const trackData = await trackRes.json();
-      console.log("[/api/track] Response:", trackData);
+      const data = await res.json();
 
-      if (!trackData.success) {
-        throw new Error(trackData.error || "Failed to create track");
+      if (!data.success) {
+        throw new Error(data.error || "Failed to create track");
       }
 
       const newTrack = {
-        id: trackData.track.id,
+        id: data.track.id,
         title: title.trim(),
         artist: "You",
-        audioUrl: uploadData.fileUrl,
+        audioUrl,
         cover: coverPreview || "/artists/artist-placeholder.jpg",
       };
 
@@ -215,8 +156,8 @@ export default function PremiumStudioPage() {
       setTimeout(() => {
         setTitle("");
         setDescription("");
-        setAudioFile(null);
-        setCoverFile(null);
+        setAudioUrl(null);
+        setCoverUrl(null);
         setCoverPreview(null);
         setUploadStatus("idle");
       }, 2000);
@@ -233,16 +174,13 @@ export default function PremiumStudioPage() {
     }
   };
 
-  const removeAudio = () => {
-    setAudioFile(null);
-    if (audioInputRef.current) audioInputRef.current.value = "";
+  const removeAudio = () => setAudioUrl(null);
+  const removeCover = () => {
+    setCoverUrl(null);
+    setCoverPreview(null);
   };
 
-  const removeCover = () => {
-    setCoverFile(null);
-    setCoverPreview(null);
-    if (coverInputRef.current) coverInputRef.current.value = "";
-  };
+  const canSubmit = title.trim() && audioUrl && !isUploading;
 
   return (
     <div className="space-y-10">
@@ -255,20 +193,12 @@ export default function PremiumStudioPage() {
             Manage your tracks, analyze performance, and grow your audience.
           </p>
         </div>
-
         <div className="flex bg-surface/80 backdrop-blur-xl p-1.5 rounded-2xl border border-white/5">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`
-                flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-sm transition-all
-                ${
-                  activeTab === tab.id
-                    ? "bg-accent text-white shadow-lg shadow-accent/20"
-                    : "text-text-secondary hover:text-white hover:bg-white/5"
-                }
-              `}
+              className={`flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-sm transition-all ${activeTab === tab.id ? "bg-accent text-white shadow-lg shadow-accent/20" : "text-text-secondary hover:text-white hover:bg-white/5"}`}
             >
               <tab.icon size={18} />
               {tab.label}
@@ -335,7 +265,6 @@ export default function PremiumStudioPage() {
                         required
                       />
                     </div>
-
                     <div className="space-y-2">
                       <label className="label">Genre</label>
                       <select
@@ -368,60 +297,47 @@ export default function PremiumStudioPage() {
                     <div className="space-y-3">
                       <label className="label">Audio File *</label>
                       <div
-                        className={`
-                          drop-zone relative
-                          ${audioFile ? "border-accent/50 bg-accent/5" : ""}
-                        `}
-                        onClick={() => audioInputRef.current?.click()}
+                        className={`drop-zone ${audioUrl ? "border-accent/50 bg-accent/5" : ""}`}
                       >
-                        <input
-                          ref={audioInputRef}
-                          type="file"
-                          accept="audio/*,.mp3,.wav,.flac,.m4a"
-                          onChange={handleAudioSelect}
-                          className="hidden"
-                        />
-
-                        {audioFile ? (
+                        {audioUrl ? (
                           <div className="flex items-center gap-4 w-full">
                             <div className="w-14 h-14 rounded-xl bg-accent/20 flex items-center justify-center flex-shrink-0">
                               <Music size={24} className="text-accent" />
                             </div>
                             <div className="flex-1 min-w-0">
                               <p className="font-bold truncate">
-                                {audioFile.name}
+                                Audio uploaded
                               </p>
-                              <p className="text-xs text-text-muted">
-                                {(audioFile.size / (1024 * 1024)).toFixed(2)} MB
+                              <p className="text-xs text-green-400">
+                                Ready to publish
                               </p>
                             </div>
                             <button
                               type="button"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                removeAudio();
-                              }}
+                              onClick={removeAudio}
                               className="p-2 rounded-full hover:bg-white/10 transition-colors"
                             >
                               <X size={18} className="text-text-secondary" />
                             </button>
                           </div>
                         ) : (
-                          <div className="flex flex-col items-center gap-4">
-                            <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center">
-                              <Upload size={28} className="text-text-muted" />
-                            </div>
-                            <div className="text-center">
-                              <p className="font-bold mb-1">
-                                Drop audio file here
-                              </p>
-                              <p className="text-sm text-text-muted">
-                                or click to browse
-                              </p>
-                              <p className="text-xs text-text-muted mt-2">
-                                MP3, WAV, FLAC (Max 50MB)
-                              </p>
-                            </div>
+                          <div className="flex flex-col items-center gap-4 py-6">
+                            <UploadButton<AppRouter, "audioUploader">
+                              endpoint="audioUploader"
+                              onClientUploadComplete={(res) => {
+                                if (res && res[0]) setAudioUrl(res[0].url);
+                              }}
+                              onUploadError={(error) => {
+                                setErrorMessage(
+                                  `Upload failed: ${error.message}`,
+                                );
+                                setUploadStatus("error");
+                              }}
+                              className="ut-button:bg-accent ut-button:text-white ut-button:rounded-xl ut-button:px-6 ut-button:py-3 ut-button:font-bold"
+                            />
+                            <p className="text-xs text-text-muted">
+                              MP3, WAV, FLAC (Max 32MB)
+                            </p>
                           </div>
                         )}
                       </div>
@@ -430,20 +346,8 @@ export default function PremiumStudioPage() {
                     <div className="space-y-3">
                       <label className="label">Cover Art</label>
                       <div
-                        className={`
-                          drop-zone relative
-                          ${coverFile ? "border-accent/50 bg-accent/5" : ""}
-                        `}
-                        onClick={() => coverInputRef.current?.click()}
+                        className={`drop-zone ${coverUrl ? "border-accent/50 bg-accent/5" : ""}`}
                       >
-                        <input
-                          ref={coverInputRef}
-                          type="file"
-                          accept="image/*"
-                          onChange={handleCoverSelect}
-                          className="hidden"
-                        />
-
                         {coverPreview ? (
                           <div className="flex items-center gap-4 w-full">
                             <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
@@ -454,39 +358,37 @@ export default function PremiumStudioPage() {
                               />
                             </div>
                             <div className="flex-1">
-                              <p className="font-bold">Cover art selected</p>
-                              <p className="text-xs text-text-muted">
-                                {coverFile?.name}
-                              </p>
+                              <p className="font-bold">Cover art uploaded</p>
+                              <p className="text-xs text-green-400">Ready</p>
                             </div>
                             <button
                               type="button"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                removeCover();
-                              }}
+                              onClick={removeCover}
                               className="p-2 rounded-full hover:bg-white/10 transition-colors"
                             >
                               <X size={18} className="text-text-secondary" />
                             </button>
                           </div>
                         ) : (
-                          <div className="flex flex-col items-center gap-4">
-                            <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center">
-                              <ImageIcon
-                                size={28}
-                                className="text-text-muted"
-                              />
-                            </div>
-                            <div className="text-center">
-                              <p className="font-bold mb-1">Drop image here</p>
-                              <p className="text-sm text-text-muted">
-                                or click to browse
-                              </p>
-                              <p className="text-xs text-text-muted mt-2">
-                                JPG, PNG (Max 5MB)
-                              </p>
-                            </div>
+                          <div className="flex flex-col items-center gap-4 py-6">
+                            <UploadButton<AppRouter, "imageUploader">
+                              endpoint="imageUploader"
+                              onClientUploadComplete={(res) => {
+                                if (res && res[0]) {
+                                  setCoverUrl(res[0].url);
+                                  setCoverPreview(res[0].url);
+                                }
+                              }}
+                              onUploadError={(error) => {
+                                setErrorMessage(
+                                  `Upload failed: ${error.message}`,
+                                );
+                              }}
+                              className="ut-button:bg-white/10 ut-button:text-white ut-button:rounded-xl ut-button:px-6 ut-button:py-3 ut-button:font-bold"
+                            />
+                            <p className="text-xs text-text-muted">
+                              JPG, PNG (Max 4MB)
+                            </p>
                           </div>
                         )}
                       </div>
@@ -518,13 +420,13 @@ export default function PremiumStudioPage() {
                     ) : (
                       <motion.button
                         type="submit"
-                        disabled={isUploading}
+                        disabled={!canSubmit}
                         className="w-full btn-primary py-5 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {isUploading ? (
                           <>
                             <Loader2 size={22} className="animate-spin" />
-                            Uploading...
+                            Publishing...
                           </>
                         ) : (
                           <>
@@ -642,7 +544,6 @@ export default function PremiumStudioPage() {
             <div className="lg:col-span-2">
               <div className="glass rounded-3xl p-8 space-y-6">
                 <h2 className="text-2xl font-bold">Edit Profile</h2>
-
                 <div className="space-y-2">
                   <label className="label">Stage Name</label>
                   <input
@@ -651,7 +552,6 @@ export default function PremiumStudioPage() {
                     className="input"
                   />
                 </div>
-
                 <div className="space-y-2">
                   <label className="label">Bio</label>
                   <textarea
@@ -660,7 +560,6 @@ export default function PremiumStudioPage() {
                     className="input resize-none"
                   />
                 </div>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="label">Instagram URL</label>
@@ -679,14 +578,12 @@ export default function PremiumStudioPage() {
                     />
                   </div>
                 </div>
-
                 <div className="flex items-center gap-4 pt-4">
                   <button className="btn-primary">Save Changes</button>
                   <button className="btn-secondary">Discard</button>
                 </div>
               </div>
             </div>
-
             <div className="space-y-6">
               <div className="glass rounded-3xl p-6">
                 <h3 className="text-lg font-bold mb-6">Profile Picture</h3>
@@ -704,7 +601,6 @@ export default function PremiumStudioPage() {
                   </button>
                 </div>
               </div>
-
               <div className="glass rounded-3xl p-6">
                 <h3 className="text-lg font-bold mb-4">Profile Preview</h3>
                 <div className="text-center p-6 bg-surface rounded-2xl">

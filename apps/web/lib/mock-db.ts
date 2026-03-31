@@ -126,7 +126,19 @@ const artizz = createArtist({
   joinedAt: "2026-02-03T10:00:00.000Z"
 });
 
-const seedArtists: ArtistRecord[] = [lesj, ricoMilano, artizz];
+const nani = createArtist({
+  id: "artist_nani",
+  name: "Nani",
+  genre: "RnB",
+  bio: "Nani is a rising star with a unique sound that blends classic RnB elements with a modern, melodic twist.",
+  city: "Remote Studio",
+  accent: "#9B5DE5",
+  monthlyListeners: 156000,
+  totalStreams: 1200000,
+  joinedAt: "2026-03-01T10:00:00.000Z"
+});
+
+const seedArtists: ArtistRecord[] = [lesj, ricoMilano, artizz, nani];
 
 const seedTracks: TrackRecord[] = [
   createTrack({
@@ -202,6 +214,21 @@ const seedTracks: TrackRecord[] = [
     uploadedAt: "2026-03-07T08:00:00.000Z",
     sourceFileName: "Rico Milano - Hypecode Freestyle.mp3",
     previewUrl: previewUrls[4],
+    provider: "seed"
+  }),
+  createTrack({
+    id: "track_nani_ojz",
+    artist: nani,
+    title: "Nani Ojz 2.17.23",
+    genre: "RnB",
+    mood: "Velvet",
+    durationSec: 182,
+    bpm: 98,
+    streams: 45000,
+    likes: 3200,
+    uploadedAt: "2026-03-31T02:48:00.000Z",
+    sourceFileName: "Nani Ojz 2.17.23.mp3",
+    previewUrl: "/uploads/track_ew2zn0n4-nani-ojz-2-17-23.mp3",
     provider: "seed"
   })
 ];
