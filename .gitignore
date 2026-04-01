@@ -17,3 +17,4 @@ prisma/dev.db
 .vercel
 .turbo/cache
 ai_engine/.venv/
+.env*.local
