@@ -74,7 +74,7 @@ export const artists: Artist[] = [
     verified: true,
     sponsored: false,
     featuredTrack: {
-      title: "Nani Ojz 2.17.23",
+      title: "Ojz",
       audioUrl: "/uploads/track_ew2zn0n4-nani-ojz-2-17-23.mp3",
     },
   },

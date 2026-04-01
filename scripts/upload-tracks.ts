@@ -18,7 +18,7 @@ const tracks = [
     genre: "RnB",
   },
   { file: "LESJ - ELITE - NENO MASTER.m4a", title: "Elite", genre: "Hip Hop" },
-  { file: "Nani Ojz 2.17.23.mp3", title: "Nani Ojz 2.17.23", genre: "RnB" },
+  { file: "Nani Ojz 2.17.23.mp3", title: "Ojz", genre: "RnB" },
   {
     file: "Derecho De Paso_Rome_Feb16th.mp3",
     title: "Derecho De Paso",

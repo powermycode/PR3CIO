@@ -219,7 +219,7 @@ const seedTracks: TrackRecord[] = [
   createTrack({
     id: "track_nani_ojz",
     artist: nani,
-    title: "Nani Ojz 2.17.23",
+    title: "Ojz",
     genre: "RnB",
     mood: "Velvet",
     durationSec: 182,
