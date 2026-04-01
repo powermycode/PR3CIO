@@ -144,6 +144,43 @@ export default function PremiumStudioPage() {
 
   const canSubmit = title.trim() && audioUrl && !isUploading;
 
+  const tabs = [
+    { id: "upload" as const, label: "Upload", icon: Upload },
+    { id: "tracks" as const, label: "My Tracks", icon: Music },
+    { id: "profile" as const, label: "Profile", icon: Settings },
+  ];
+
+  const stats = [
+    {
+      label: "Total Streams",
+      value: "1.2M",
+      icon: PlayCircle,
+      color: "text-blue-400",
+      bgColor: "bg-blue-400/10",
+    },
+    {
+      label: "Followers",
+      value: "45.8K",
+      icon: Users,
+      color: "text-purple-400",
+      bgColor: "bg-purple-400/10",
+    },
+    {
+      label: "Growth",
+      value: "+12.5%",
+      icon: TrendingUp,
+      color: "text-green-400",
+      bgColor: "bg-green-400/10",
+    },
+    {
+      label: "Revenue",
+      value: "$4,250",
+      icon: DollarSign,
+      color: "text-yellow-400",
+      bgColor: "bg-yellow-400/10",
+    },
+  ];
+
   return (
     <div className="space-y-10">
       <header className="flex flex-col md:flex-row md:items-end justify-between gap-6">
