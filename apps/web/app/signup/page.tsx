@@ -14,24 +14,29 @@ export default function SignupPage() {
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("[Signup] Form submitted for:", email);
     setLoading(true);
     setMessage("");
 
     try {
+      console.log("[Signup] Sending POST to /api/auth/signup...");
       const res = await fetch("/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: fullName, email, password }),
       });
 
+      console.log("[Signup] Response status:", res.status);
       const data = await res.json();
+      console.log("[Signup] Response data:", data);
 
       if (data.success) {
         setMessage("Account created successfully!");
       } else {
         setMessage(data.error || "Signup failed");
       }
-    } catch {
+    } catch (err) {
+      console.error("[Signup] Error:", err);
       setMessage("Connection error. Please try again.");
     }
     setLoading(false);

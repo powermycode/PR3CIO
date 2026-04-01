@@ -92,7 +92,7 @@ const previewUrls = [
 
 const lesj = createArtist({
   id: "artist_lesj",
-  name: "LESJ",
+  name: "L ESJ",
   genre: "Alt R&B",
   bio: "Dominican-born storyteller blending velvet melodies with AI-assisted production.",
   city: "New York, US",
@@ -189,7 +189,7 @@ const seedTracks: TrackRecord[] = [
   createTrack({
     id: "track_bluehour",
     artist: lesj,
-    title: "Blue Hour Signal",
+    title: "Neno",
     genre: "Alt R&B",
     mood: "Late Night",
     durationSec: 162,
@@ -197,8 +197,8 @@ const seedTracks: TrackRecord[] = [
     streams: 46220,
     likes: 3352,
     uploadedAt: "2026-03-10T08:00:00.000Z",
-    sourceFileName: "LESJ - Blue Hour Signal.mp3",
-    previewUrl: previewUrls[3],
+    sourceFileName: "LESJ - ELITE - NENO MASTER.m4a",
+    previewUrl: "/uploads/lesj-elite-neno-master.m4a",
     provider: "seed"
   }),
   createTrack({

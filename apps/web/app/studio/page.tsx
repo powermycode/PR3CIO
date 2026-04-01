@@ -24,7 +24,7 @@ import TrackCard from "../../components/TrackCard";
 import { useAppStore } from "../../lib/store/use-app-store";
 import { demoTracks } from "../../lib/demo-tracks";
 
-const DEMO_ARTIST_ID = "artist_lesj";
+const DEMO_ARTIST_ID = 1;
 
 export default function PremiumStudioPage() {
   const [activeTab, setActiveTab] = useState<"upload" | "tracks" | "profile">(
@@ -43,7 +43,7 @@ export default function PremiumStudioPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const [tracks, setTracks] = useState<
     Array<{
-      id: string;
+      id: string | number;
       title: string;
       artist: string;
       audioUrl: string;
@@ -56,45 +56,9 @@ export default function PremiumStudioPage() {
 
   const allTracks = [...tracks, ...uploadedTracks, ...demoTracks.slice(0, 3)];
 
-  const stats = [
-    {
-      label: "Total Streams",
-      value: "1.2M",
-      icon: PlayCircle,
-      color: "text-blue-400",
-      bgColor: "bg-blue-400/10",
-    },
-    {
-      label: "Followers",
-      value: "45.8K",
-      icon: Users,
-      color: "text-purple-400",
-      bgColor: "bg-purple-400/10",
-    },
-    {
-      label: "Growth",
-      value: "+12.5%",
-      icon: TrendingUp,
-      color: "text-green-400",
-      bgColor: "bg-green-400/10",
-    },
-    {
-      label: "Revenue",
-      value: "$4,250",
-      icon: DollarSign,
-      color: "text-yellow-400",
-      bgColor: "bg-yellow-400/10",
-    },
-  ];
-
-  const tabs = [
-    { id: "upload" as const, label: "Upload", icon: Upload },
-    { id: "tracks" as const, label: "My Tracks", icon: Music },
-    { id: "profile" as const, label: "Profile", icon: Settings },
-  ];
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("[Studio] Submit clicked, title:", title);
 
     if (!title.trim()) {
       setErrorMessage("Please enter a track title");
@@ -112,6 +76,7 @@ export default function PremiumStudioPage() {
     setErrorMessage("");
 
     try {
+      console.log("[Studio] Sending POST to /api/track...");
       const res = await fetch("/api/track", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -125,17 +90,14 @@ export default function PremiumStudioPage() {
         }),
       });
 
+      console.log("[Studio] API Response status:", res.status);
       if (!res.ok) {
         const text = await res.text();
         throw new Error(`Failed to create track (${res.status}): ${text}`);
       }
 
-      const contentType = res.headers.get("content-type") || "";
-      if (!contentType.includes("application/json")) {
-        throw new Error("Server returned HTML instead of JSON");
-      }
-
       const data = await res.json();
+      console.log("[Studio] API Response data:", data);
 
       if (!data.success) {
         throw new Error(data.error || "Failed to create track");
@@ -150,7 +112,7 @@ export default function PremiumStudioPage() {
       };
 
       setTracks((prev) => [newTrack, ...prev]);
-      addUploadedTrack(newTrack);
+      addUploadedTrack(newTrack as any);
       setUploadStatus("success");
 
       setTimeout(() => {
@@ -162,7 +124,7 @@ export default function PremiumStudioPage() {
         setUploadStatus("idle");
       }, 2000);
     } catch (error) {
-      console.error("Upload error:", error);
+      console.error("[Studio] Upload error:", error);
       setErrorMessage(
         error instanceof Error
           ? error.message
@@ -325,9 +287,14 @@ export default function PremiumStudioPage() {
                             <UploadButton<AppRouter, "audioUploader">
                               endpoint="audioUploader"
                               onClientUploadComplete={(res) => {
+                                console.log(
+                                  "UPLOAD CLICKED - audio complete:",
+                                  res,
+                                );
                                 if (res && res[0]) setAudioUrl(res[0].url);
                               }}
                               onUploadError={(error) => {
+                                console.log("UPLOAD ERROR:", error);
                                 setErrorMessage(
                                   `Upload failed: ${error.message}`,
                                 );
@@ -374,12 +341,17 @@ export default function PremiumStudioPage() {
                             <UploadButton<AppRouter, "imageUploader">
                               endpoint="imageUploader"
                               onClientUploadComplete={(res) => {
+                                console.log(
+                                  "UPLOAD CLICKED - image complete:",
+                                  res,
+                                );
                                 if (res && res[0]) {
                                   setCoverUrl(res[0].url);
                                   setCoverPreview(res[0].url);
                                 }
                               }}
                               onUploadError={(error) => {
+                                console.log("UPLOAD ERROR - image:", error);
                                 setErrorMessage(
                                   `Upload failed: ${error.message}`,
                                 );

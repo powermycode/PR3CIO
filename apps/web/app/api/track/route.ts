@@ -5,11 +5,14 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
+  console.log("[/api/track] POST request received");
   try {
     const body = await request.json();
+    console.log("[/api/track] Request body:", body);
     const { title, audioUrl, artistId, coverUrl, genre, description } = body;
 
     if (!title || !audioUrl || !artistId) {
+      console.error("[/api/track] Missing required fields");
       return NextResponse.json(
         {
           success: false,
@@ -24,12 +27,14 @@ export async function POST(request: Request) {
     });
 
     if (!artistProfile) {
+      console.error(`[/api/track] Artist profile not found for id: ${artistId}`);
       return NextResponse.json(
         { success: false, error: "Artist profile not found" },
         { status: 404 },
       );
     }
 
+    console.log("[/api/track] Creating track in DB...");
     const track = await prisma.track.create({
       data: {
         title,
@@ -40,21 +45,11 @@ export async function POST(request: Request) {
         description: description || null,
       },
       include: {
-        artist: {
-          select: {
-            id: true,
-            stageName: true,
-            avatar: true,
-            user: {
-              select: {
-                name: true,
-              },
-            },
-          },
-        },
+        artist: true,
       },
     });
 
+    console.log("[/api/track] Track created successfully:", track.id);
     return NextResponse.json({ success: true, track }, { status: 201 });
   } catch (error) {
     console.error("[/api/track] Error creating track:", error);

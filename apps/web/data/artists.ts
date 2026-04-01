@@ -49,18 +49,18 @@ export const artists: Artist[] = [
     },
   },
   {
-    name: "Lesj",
+    name: "L ESJ",
     slug: "lesj",
     genre: "Hip Hop",
     listeners: "269K",
     country: "USA",
     image: "/artists/LesjPr3cio.png",
-    bio: "Lesj is redefining the sound of modern Hip Hop with infectious energy and innovative beats.",
+    bio: "L ESJ is redefining the sound of modern Hip Hop with infectious energy and innovative beats.",
     verified: true,
     sponsored: true,
     featuredTrack: {
-      title: "Lesj Vibe",
-      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+      title: "Neno",
+      audioUrl: "/uploads/lesj-elite-neno-master.m4a",
     },
   },
   {

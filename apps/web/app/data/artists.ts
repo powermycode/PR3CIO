@@ -15,7 +15,7 @@ export const artists = [
   },
   {
     slug: "lesj",
-    name: "Lesj",
+    name: "L ESJ",
     genre: "Hip Hop",
     listeners: "269K",
     image: "/artists/lesj.png",
